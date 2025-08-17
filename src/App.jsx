@@ -8,6 +8,7 @@ import Shop from './components/Shop'
 import Cart from './components/Cart'
 import Chackout from './components/Chackout'
 import NotFound from './components/NotFound'
+import User from './components/user'
 
 function App() {
 
@@ -21,7 +22,7 @@ function App() {
           <Route path="/shop" element={<Shop />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Chackout />} />
-          <Route path="/checkout" element={<Chackout />} />
+          <Route path="/user" element={<User />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

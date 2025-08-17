@@ -42,9 +42,11 @@ function Header() {
                     </div>
                     <div className="container px-0">
                         <nav className="navbar navbar-light bg-white navbar-expand-xl">
-                            <a href="index.html" className="navbar-brand">
+
+
+                            <Link to="/" className="navbar-brand">
                                 <h1 className="text-primary display-6">Fruitables</h1>
-                            </a>
+                            </Link>
                             <button
                                 className="navbar-toggler py-2 px-3"
                                 type="button"
@@ -86,7 +88,8 @@ function Header() {
                                     >
                                         <i className="fas fa-search text-primary" />
                                     </button>
-                                    <a href="#" className="position-relative me-4 my-auto">
+
+                                    <Link to="/cart" className="position-relative me-4 my-auto">
                                         <i className="fa fa-shopping-bag fa-2x" />
                                         <span
                                             className="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
@@ -94,10 +97,11 @@ function Header() {
                                         >
                                             3
                                         </span>
-                                    </a>
-                                    <a href="#" className="my-auto">
+                                    </Link>
+
+                                    <Link to="/user" className="my-auto">
                                         <i className="fas fa-user fa-2x" />
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </nav>
