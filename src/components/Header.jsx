@@ -1,16 +1,14 @@
+import { Link, useLocation } from "react-router-dom";
+
 function Header() {
+
+
+    const loc = useLocation();
+
     return (
         <>
-
             <>
-                {/* Spinner Start */}
-                {/* <div
-                    id="spinner"
-                    className="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center"
-                >
-                    <div className="spinner-grow text-primary" role="status" />
-                </div> */}
-                {/* Spinner End */}
+
                 {/* Navbar start */}
                 <div className="container-fluid fixed-top">
                     <div className="container topbar bg-primary d-none d-lg-block">
@@ -57,15 +55,14 @@ function Header() {
                             </button>
                             <div className=" navbar-collapse bg-white" >
                                 <div className="navbar-nav mx-auto">
-                                    <a href="index.html" className="nav-item nav-link active">
-                                        Home
-                                    </a>
-                                    <a href="shop.html" className="nav-item nav-link">
-                                        Shop
-                                    </a>
-                                    <a href="shop-detail.html" className="nav-item nav-link">
-                                        Shop Detail
-                                    </a>
+
+
+                                    <Link to="/" className="nav-item nav-link">Home</Link>
+
+                                    <Link to="/shop" className="nav-item nav-link">Shop</Link>
+
+                                    <Link to="/single" className="nav-item nav-link">Shop Detail</Link>
+
                                     <div className="nav-item dropdown">
                                         <a
                                             href="#"
@@ -75,23 +72,11 @@ function Header() {
                                             Pages
                                         </a>
                                         <div className="dropdown-menu m-0 bg-secondary rounded-0">
-                                            <a href="cart.html" className="dropdown-item">
-                                                Cart
-                                            </a>
-                                            <a href="chackout.html" className="dropdown-item">
-                                                Chackout
-                                            </a>
-                                            <a href="testimonial.html" className="dropdown-item">
-                                                Testimonial
-                                            </a>
-                                            <a href="404.html" className="dropdown-item">
-                                                404 Page
-                                            </a>
+                                            <Link to="/cart" className="dropdown-item">Cart</Link>
+                                            <Link to="/checkout" className="dropdown-item">Chackout</Link>
+                                            <Link to="/404" className="dropdown-item">404 Page</Link>
                                         </div>
                                     </div>
-                                    <a href="contact.html" className="nav-item nav-link">
-                                        Contact
-                                    </a>
                                 </div>
                                 <div className="d-flex m-3 me-0">
                                     <button
@@ -119,84 +104,72 @@ function Header() {
                     </div>
                 </div>
                 {/* Navbar End */}
-                {/* Modal Search Start */}
-                <div
-                    className="modal fade"
-                    id="searchModal"
-                    tabIndex={-1}
-                    aria-labelledby="exampleModalLabel"
-                    aria-hidden="true"
-                >
-                    <div className="modal-dialog modal-fullscreen">
-                        <div className="modal-content rounded-0">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="exampleModalLabel">
-                                    Search by keyword
-                                </h5>
-                                <button
-                                    type="button"
-                                    className="btn-close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"
-                                />
-                            </div>
-                            <div className="modal-body d-flex align-items-center">
-                                <div className="input-group w-75 mx-auto d-flex">
-                                    <input
-                                        type="search"
-                                        className="form-control p-3"
-                                        placeholder="keywords"
-                                        aria-describedby="search-icon-1"
-                                    />
-                                    <span id="search-icon-1" className="input-group-text p-3">
-                                        <i className="fa fa-search" />
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {/* Modal Search End */}
-                {/* Hero Start */}
-                <div className="container-fluid py-5 mb-5 hero-header">
-                    <div className="container py-5">
-                        <div className="row g-5 align-items-center">
-                            <div className="col-md-12 col-lg-7">
-                                <h4 className="mb-3 text-secondary">100% Organic Foods</h4>
-                                <h1 className="mb-5 display-3 text-primary">
-                                    Organic Veggies &amp; Fruits Foods
-                                </h1>
-                                <div className="position-relative mx-auto">
-                                    <input
-                                        className="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
-                                        type="number"
-                                        placeholder="Search"
-                                    />
-                                    <button
-                                        type="submit"
-                                        className="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
-                                        style={{ top: 0, right: "25%" }}
-                                    >
-                                        Submit Now
-                                    </button>
-                                </div>
-                            </div>
-                            <div className="col-md-12 col-lg-5">
-                               
-                                    <div className="carousel-inner" role="listbox">
-                                        <div className="carousel-item active rounded">
-                                            <img
-                                                src="./assets/images/hero-img-1.png"
-                                                className="img-fluid w-100 h-100 bg-secondary rounded"
-                                                alt="First slide"
+
+
+                {loc.pathname === '/' ? (
+                    <>
+                        {/* Hero Start */}
+                        <div className="container-fluid py-5 mb-5 hero-header">
+                            <div className="container py-5">
+                                <div className="row g-5 align-items-center">
+                                    <div className="col-md-12 col-lg-7">
+                                        <h4 className="mb-3 text-secondary">100% Organic Foods</h4>
+                                        <h1 className="mb-5 display-3 text-primary">
+                                            Organic Veggies &amp; Fruits Foods
+                                        </h1>
+                                        <div className="position-relative mx-auto">
+                                            <input
+                                                className="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
+                                                type="number"
+                                                placeholder="Search"
                                             />
+                                            <button
+                                                type="submit"
+                                                className="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
+                                                style={{ top: 0, right: "25%" }}
+                                            >
+                                                Submit Now
+                                            </button>
                                         </div>
                                     </div>
+                                    <div className="col-md-12 col-lg-5">
+
+                                        <div className="carousel-inner" role="listbox">
+                                            <div className="carousel-item active rounded">
+                                                <img
+                                                    src="./assets/images/hero-img-1.png"
+                                                    className="img-fluid w-100 h-100 bg-secondary rounded"
+                                                    alt="First slide"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                        {/* Hero End */}
+                    </>
+                ) : (<>
+
+                    {/* Single Page Header start */}
+                    <div className="container-fluid page-header py-5">
+                        <h1 className="text-center text-white display-6">Shop Detail</h1>
+                        <ol className="breadcrumb justify-content-center mb-0">
+                            <li className="breadcrumb-item">
+                                <a href="#">Home</a>
+                            </li>
+                            <li className="breadcrumb-item">
+                                <a href="#">Pages</a>
+                            </li>
+                            <li className="breadcrumb-item active text-white">Shop Detail</li>
+                        </ol>
                     </div>
-                </div>
-                {/* Hero End */}
+                    {/* Single Page Header End */}
+
+                </>)};
+
+
+
             </>
 
 

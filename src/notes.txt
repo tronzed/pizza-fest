@@ -1,15 +1,15 @@
 
 
-
 Create food order in app
 
 -------Pages-------
 
 1. Home
-2. Listing
-3. Single
-4. cart
-5. checkout
+2. Shop
+3. Shop detail
+4. Cart
+5. Checkout
+6. 404
 
 
 
