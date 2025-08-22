@@ -1,15 +1,11 @@
 
 
-Create food order in app
-
--------Pages-------
-
-1. Home
-2. Shop
-3. Shop detail
-4. Cart
-5. Checkout
-6. 404
 
 
 
+
+- create a add to cart system
+
+1. listing page add item
+
+2. cart page show item

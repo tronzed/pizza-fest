@@ -1,6 +1,135 @@
 {
-  "users": [
-    { "id": 1, "name": "John" },
-    { "id": 2, "name": "Jane" }
+  "products": [
+    {
+      "id": "1",
+      "name": "Margherita Pizza",
+      "price": "199",
+      "img_name": "margherita.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "2",
+      "name": "Farmhouse Pizza",
+      "price": "299",
+      "img_name": "farmhouse.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "3",
+      "name": "Pepperoni Pizza",
+      "price": "349",
+      "img_name": "pepperoni.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "4",
+      "name": "BBQ Chicken Pizza",
+      "price": "399",
+      "img_name": "bbq_chicken.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "5",
+      "name": "Veggie Supreme Pizza",
+      "price": "279",
+      "img_name": "veggie_supreme.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "6",
+      "name": "Paneer Tikka Pizza",
+      "price": "319",
+      "img_name": "paneer_tikka.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "7",
+      "name": "Cheese Burst Pizza",
+      "price": "249",
+      "img_name": "cheese_burst.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "8",
+      "name": "Mexican Green Pizza",
+      "price": "329",
+      "img_name": "mexican_green_wave.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "9",
+      "name": "Deluxe Veggie Pizza",
+      "price": "289",
+      "img_name": "deluxe_veggie.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "10",
+      "name": "Dominator Pizza",
+      "price": "429",
+      "img_name": "chicken_dominator.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "11",
+      "name": "Peri Peri Chicken Pizza",
+      "price": "379",
+      "img_name": "peri_peri_chicken.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "12",
+      "name": "Golden Corn Pizza",
+      "price": "229",
+      "img_name": "golden_corn.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "13",
+      "name": "Italian Classic Pizza",
+      "price": "339",
+      "img_name": "italian_classic.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "14",
+      "name": "Tandoori Paneer Pizza",
+      "price": "349",
+      "img_name": "tandoori_paneer.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "15",
+      "name": "Smoky Sausage Pizza",
+      "price": "389",
+      "img_name": "smoky_sausage.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "16",
+      "name": "Spicy Veggie Pizza",
+      "price": "269",
+      "img_name": "spicy_veggie.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "17",
+      "name": "Cheesy Garlic Pizza",
+      "price": "259",
+      "img_name": "cheesy_garlic.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    },
+    {
+      "id": "19",
+      "name": "Classic Hawaiian Pizza",
+      "price": "379",
+      "img_name": "hawaiian.jpg",
+      "text": "Lorem ipsum dolor sit amet consectetur"
+    }
+  ],
+  "carts": [
+    {
+      "id": "6"
+    }
   ]
 }

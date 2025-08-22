@@ -1,9 +1,28 @@
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 function Header() {
 
-
     const loc = useLocation();
+    const [cartData, setCartData] = useState();
+
+
+    const cartRead = async () => {
+        let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
+        
+        let data = await res.json();
+
+        let data2 = Object.values(data);
+
+        console.log(data2);
+
+        setCartData(data2);
+        
+    }
+
+    useEffect(()=>{
+        cartRead();
+    },[]);
 
     return (
         <>
@@ -45,7 +64,7 @@ function Header() {
 
 
                             <Link to="/" className="navbar-brand">
-                                <h1 className="text-primary display-6">Fruitables</h1>
+                                <h1 className="text-primary display-6">Pizza Fest</h1>
                             </Link>
                             <button
                                 className="navbar-toggler py-2 px-3"
@@ -95,7 +114,7 @@ function Header() {
                                             className="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                                             style={{ top: "-5px", left: 15, height: 20, minWidth: 20 }}
                                         >
-                                            3
+                                            {cartData?.length}
                                         </span>
                                     </Link>
 
