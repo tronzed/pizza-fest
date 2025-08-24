@@ -1,47 +1,80 @@
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
+import firebase from "firebase/compat/app";
 
 
 function Cart() {
 
 
     const [data, setData] = useState([]);
+    const [cartData, setCartData] = useState([]);
+
+    const [loader, setLoader] = useState(true);
+
 
     const cartRead = async () => {
         let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
         let data = await res.json();
 
-        let data2 = Object.values(data);
+        let data2 = Object.entries(data).map(([key, value]) => ({
+            'firebaseId': key,
+            ...value,
+        }))
+
+        setCartData(data2);
 
         const productCart = [];
 
-        for(let item of data2){
-            let res = await fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${item.id}.json`);
+        for (let item of data2) {
+            let res = await fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${item.id - 1}.json`);
             let data = await res.json();
             productCart.push(data);
         }
         setData(productCart);
+        setLoader(false);
+
     }
 
-    function deleteData(id){
-        fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/carts/${id}.json`,{
-            method:"DELETE"
-        }).then(()=>{
+    const deleteData = (id) => {
+
+        const cartBox = cartData.find(item => item?.id == id);
+
+        // console.log(id,'----------id');
+        // console.log(cartData,'----------cartData');
+        // console.log(cartBox.firebaseId,'----------firebaseIds333333333');
+
+        fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/carts/${cartBox?.firebaseId}.json`, {
+            method: "DELETE"
+        }).then(() => {
             cartRead();
         });
-    }  
+
+    }
 
     useEffect(() => {
         cartRead();
     }, [])
-
 
     return (
 
         <>
             <Header />
             <>
+
+                {loader && (
+                    <>
+                        <div className="loader_box">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </>
+                )}
+
+
+
+
                 {/* Cart Page Start */}
                 <div className="container-fluid py-5">
                     <div className="container py-5">
@@ -60,54 +93,54 @@ function Cart() {
                                 <tbody>
 
                                     {data?.map((item, index) => (
-                                          <tr key={index}>
-                                                <th scope="row">
-                                                    <div className="d-flex align-items-center">
-                                                        <img
-                                                            src="./assets/images/vegetable-item-3.png"
-                                                            className="img-fluid me-5 rounded-circle"
-                                                            style={{ width: 80, height: 80 }}
-                                                            alt=""
-                                                        />
+                                        <tr key={index}>
+                                            <th scope="row">
+                                                <div className="d-flex align-items-center">
+                                                    <img
+                                                        src="./assets/images/vegetable-item-3.png"
+                                                        className="img-fluid me-5 rounded-circle"
+                                                        style={{ width: 80, height: 80 }}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            </th>
+                                            <td>
+                                                <p className="mb-0 mt-4">{item?.name}</p>
+                                            </td>
+                                            <td>
+                                                <p className="mb-0 mt-4">{item?.price}$</p>
+                                            </td>
+                                            <td>
+                                                <div
+                                                    className="input-group quantity mt-4"
+                                                    style={{ width: 100 }}
+                                                >
+                                                    <div className="input-group-btn">
+                                                        <button className="btn btn-sm btn-minus rounded-circle bg-light border">
+                                                            <i className="fa fa-minus" />
+                                                        </button>
                                                     </div>
-                                                </th>
-                                                <td>
-                                                    <p className="mb-0 mt-4">{item?.name}</p>
-                                                </td>
-                                                <td>
-                                                    <p className="mb-0 mt-4">{item?.price}$</p>
-                                                </td>
-                                                <td>
-                                                    <div
-                                                        className="input-group quantity mt-4"
-                                                        style={{ width: 100 }}
-                                                    >
-                                                        <div className="input-group-btn">
-                                                            <button className="btn btn-sm btn-minus rounded-circle bg-light border">
-                                                                <i className="fa fa-minus" />
-                                                            </button>
-                                                        </div>
-                                                        <input
-                                                            type="text"
-                                                            className="form-control form-control-sm text-center border-0"
-                                                            defaultValue={1}
-                                                        />
-                                                        <div className="input-group-btn">
-                                                            <button className="btn btn-sm btn-plus rounded-circle bg-light border">
-                                                                <i className="fa fa-plus" />
-                                                            </button>
-                                                        </div>
+                                                    <input
+                                                        type="text"
+                                                        className="form-control form-control-sm text-center border-0"
+                                                        defaultValue={1}
+                                                    />
+                                                    <div className="input-group-btn">
+                                                        <button className="btn btn-sm btn-plus rounded-circle bg-light border">
+                                                            <i className="fa fa-plus" />
+                                                        </button>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    <p className="mb-0 mt-4">2.99 $</p>
-                                                </td>
-                                                <td>
-                                                    <button onClick={()=> deleteData(item.id)} className="btn btn-md rounded-circle bg-light border mt-4">
-                                                        <i className="fa fa-times text-danger" />
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p className="mb-0 mt-4">{item?.id}</p>
+                                            </td>
+                                            <td>
+                                                <button onClick={() => { deleteData(item?.id); setLoader(true) }} className="btn btn-md rounded-circle bg-light border mt-4">
+                                                    <i className="fa fa-times text-danger" />
+                                                </button>
+                                            </td>
+                                        </tr>
 
                                     ))}
 
@@ -164,7 +197,6 @@ function Cart() {
                 </div>
                 {/* Cart Page End */}
             </>
-
 
             <Footer />
         </>

@@ -14,8 +14,6 @@ function Header() {
 
         let data2 = Object.values(data);
 
-        console.log(data2);
-
         setCartData(data2);
         
     }

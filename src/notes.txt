@@ -1,11 +1,11 @@
 
+- Add loader first
 
+- Finish cart page
 
+- Finish checkout page
 
+- Finish order page
 
+- Finish home page
 
-- create a add to cart system
-
-1. listing page add item
-
-2. cart page show item

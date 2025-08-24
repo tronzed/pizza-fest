@@ -9,7 +9,7 @@ function Home() {
 
             
 <>
-  <div className="container-fluid featurs py-5">
+  <div className="container-fluid featurs py-5 hide_me">
     <div className="container py-5">
       <div className="row g-4">
         <div className="col-md-6 col-lg-3">
@@ -1220,7 +1220,7 @@ function Home() {
   </div>
   {/* Bestsaler Product End */}
   {/* Fact Start */}
-  <div className="container-fluid py-5">
+  <div className="container-fluid py-5 hide_me">
     <div className="container">
       <div className="bg-light p-5 rounded">
         <div className="row g-4 justify-content-center">
