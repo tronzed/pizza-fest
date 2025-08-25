@@ -6,14 +6,10 @@ function Header() {
     const loc = useLocation();
     const [cartData, setCartData] = useState();
 
-
     const cartRead = async () => {
         let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
-
         let data = await res.json();
-
         let data2 = Object.values(data);
-
         setCartData(data2);
 
     }
@@ -80,7 +76,7 @@ function Header() {
 
                                     <Link to="/shop" className="nav-item nav-link">Shop</Link>
 
-                                    <Link to="/single" className="nav-item nav-link">Shop Detail</Link>
+                                    {/* <Link to="/single" className="nav-item nav-link">Shop Detail</Link> */}
 
                                     <div className="nav-item dropdown">
                                         <a

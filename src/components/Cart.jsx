@@ -13,23 +13,39 @@ function Cart() {
     const cartRead = async () => {
         let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
         let data = await res.json();
-        
-        let data2 = Object?.entries(data)?.map(([key, value]) => ({
-            'firebaseId': key,
-            ...value,
-        }))
 
-        setCartData(data2);
+        if (data !== null) {
 
-        const productCart = [];
+            console.log('done');
 
-        for (let item of data2) {
-            let res = await fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${item.id - 1}.json`);
-            let data = await res.json();
-            productCart.push(data);
+            let data2 = Object?.entries(data)?.map(([key, value]) => ({
+                'firebaseId': key,
+                ...value,
+            }))
+
+            setCartData(data2);
+
+            const productCart = [];
+
+            for (let item of data2) {
+                let res = await fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${item.id - 1}.json`);
+                let data = await res.json();
+                productCart.push(data);
+            }
+            setData(productCart);
+            setLoader(false);
+
+        } else {
+            setData([]);
+            setLoader(false);
+
+            console.log('undone');
+
         }
-        setData(productCart);
-        setLoader(false);
+
+
+
+
 
     }
 
@@ -52,7 +68,7 @@ function Cart() {
     return (
 
         <>
-            <Header/>
+            <Header />
             <Loader loader={loader} />
             <>
 
