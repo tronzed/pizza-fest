@@ -1,23 +1,20 @@
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
-import firebase from "firebase/compat/app";
-
+import Loader from "./Loader";
+import { Link } from "react-router-dom";
 
 function Cart() {
 
-
     const [data, setData] = useState([]);
     const [cartData, setCartData] = useState([]);
-
     const [loader, setLoader] = useState(true);
-
 
     const cartRead = async () => {
         let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
         let data = await res.json();
-
-        let data2 = Object.entries(data).map(([key, value]) => ({
+        
+        let data2 = Object?.entries(data)?.map(([key, value]) => ({
             'firebaseId': key,
             ...value,
         }))
@@ -40,10 +37,6 @@ function Cart() {
 
         const cartBox = cartData.find(item => item?.id == id);
 
-        // console.log(id,'----------id');
-        // console.log(cartData,'----------cartData');
-        // console.log(cartBox.firebaseId,'----------firebaseIds333333333');
-
         fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/carts/${cartBox?.firebaseId}.json`, {
             method: "DELETE"
         }).then(() => {
@@ -59,21 +52,9 @@ function Cart() {
     return (
 
         <>
-            <Header />
+            <Header/>
+            <Loader loader={loader} />
             <>
-
-                {loader && (
-                    <>
-                        <div className="loader_box">
-                            <div class="spinner-border" role="status">
-                                <span class="visually-hidden">Loading...</span>
-                            </div>
-                        </div>
-                    </>
-                )}
-
-
-
 
                 {/* Cart Page Start */}
                 <div className="container-fluid py-5">
@@ -184,12 +165,13 @@ function Cart() {
                                         <h5 className="mb-0 ps-4 me-4">Total</h5>
                                         <p className="mb-0 pe-4">$99.00</p>
                                     </div>
-                                    <button
+                                    <Link
                                         className="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
                                         type="button"
+                                        to="/checkout"
                                     >
                                         Proceed Checkout
-                                    </button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

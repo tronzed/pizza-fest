@@ -9,18 +9,18 @@ function Header() {
 
     const cartRead = async () => {
         let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
-        
+
         let data = await res.json();
 
         let data2 = Object.values(data);
 
         setCartData(data2);
-        
+
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         cartRead();
-    },[]);
+    }, []);
 
     return (
         <>
@@ -96,6 +96,7 @@ function Header() {
                                             <Link to="/404" className="dropdown-item">404 Page</Link>
                                         </div>
                                     </div>
+                                    
                                 </div>
                                 <div className="d-flex m-3 me-0">
                                     <button

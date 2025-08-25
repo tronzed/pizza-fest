@@ -1,0 +1,20 @@
+function Loader({ loader }) {
+
+    if (!loader) return null;
+
+    return (
+        <>
+            {loader && (
+                <>
+                    <div className="loader_box">
+                        <div className="spinner-border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </>
+            )}
+        </>
+    );
+}
+
+export default Loader;

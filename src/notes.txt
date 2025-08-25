@@ -9,3 +9,11 @@
 
 - Finish home page
 
+_______________________________________________
+
+
+- Checkout page 
+
+- add to cart count header
+
+- cart issue

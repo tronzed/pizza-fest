@@ -1,44 +1,79 @@
+import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
+import { useNavigate } from "react-router-dom";
 
 
 function Chackout() {
+
+    const [name, setName] = useState();
+    const [address, setAddress] = useState();
+    const [postcode, setPostcode] = useState();
+    const [mobile, setMobile] = useState();
+    const [email, setEmail] = useState();
+
+
+    const [cartBox, setCartBox] = useState();
+    const navigate = useNavigate();
+
+
+    const addOrder = async (e) => {
+        e.preventDefault();
+        const data = { name, address, postcode, mobile, email, cartBox }
+        await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/orders.json', {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+        }).then(() => {
+            console.log('added');
+            navigate('/User');
+        });
+    }
+
+
+    const checkCart = async () => {
+
+        let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
+        let data = await res.json();
+        let data2 = Object.values(data);
+
+        const productCart = [];
+
+        for (let item of data2) {
+            let res = await fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${item.id - 1}.json`);
+            let data = await res.json();
+            productCart.push(data);
+        }
+
+        setCartBox(productCart);
+
+    }
+
+
+    useEffect(() => {
+        checkCart();
+    }, [])
+
     return (
 
         <>
             <Header />
+
+            {console.log(cartBox, "-------vijeta")}
 
             <>
                 {/* Checkout Page Start */}
                 <div className="container-fluid py-5">
                     <div className="container py-5">
                         <h1 className="mb-4">Billing details</h1>
-                        <form action="#">
+                        <form action="#" onSubmit={addOrder}>
                             <div className="row g-5">
                                 <div className="col-md-12 col-lg-6 col-xl-7">
-                                    <div className="row">
-                                        <div className="col-md-12 col-lg-6">
-                                            <div className="form-item w-100">
-                                                <label className="form-label my-3">
-                                                    First Name<sup>*</sup>
-                                                </label>
-                                                <input type="text" className="form-control" />
-                                            </div>
-                                        </div>
-                                        <div className="col-md-12 col-lg-6">
-                                            <div className="form-item w-100">
-                                                <label className="form-label my-3">
-                                                    Last Name<sup>*</sup>
-                                                </label>
-                                                <input type="text" className="form-control" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="form-item">
+                                    <div className="form-item w-100">
                                         <label className="form-label my-3">
-                                            Company Name<sup>*</sup>
+                                            Name<sup>*</sup>
                                         </label>
-                                        <input type="text" className="form-control" />
+                                        <input type="text" required className="form-control" value={name} onChange={(e) => setName(e.target.value)} />
                                     </div>
                                     <div className="form-item">
                                         <label className="form-label my-3">
@@ -47,74 +82,26 @@ function Chackout() {
                                         <input
                                             type="text"
                                             className="form-control"
-                                            placeholder="House Number Street Name"
+                                            value={address} onChange={(e) => setAddress(e.target.value)}
                                         />
                                     </div>
                                     <div className="form-item">
                                         <label className="form-label my-3">
-                                            Town/City<sup>*</sup>
+                                            Postcode<sup>*</sup>
                                         </label>
-                                        <input type="text" className="form-control" />
-                                    </div>
-                                    <div className="form-item">
-                                        <label className="form-label my-3">
-                                            Country<sup>*</sup>
-                                        </label>
-                                        <input type="text" className="form-control" />
-                                    </div>
-                                    <div className="form-item">
-                                        <label className="form-label my-3">
-                                            Postcode/Zip<sup>*</sup>
-                                        </label>
-                                        <input type="text" className="form-control" />
+                                        <input type="text" className="form-control" value={postcode} onChange={(e) => setPostcode(e.target.value)} />
                                     </div>
                                     <div className="form-item">
                                         <label className="form-label my-3">
                                             Mobile<sup>*</sup>
                                         </label>
-                                        <input type="tel" className="form-control" />
+                                        <input type="tel" className="form-control" value={mobile} onChange={(e) => setMobile(e.target.value)} />
                                     </div>
                                     <div className="form-item">
                                         <label className="form-label my-3">
                                             Email Address<sup>*</sup>
                                         </label>
-                                        <input type="email" className="form-control" />
-                                    </div>
-                                    <div className="form-check my-3">
-                                        <input
-                                            type="checkbox"
-                                            className="form-check-input"
-                                            id="Account-1"
-                                            name="Accounts"
-                                            defaultValue="Accounts"
-                                        />
-                                        <label className="form-check-label" htmlFor="Account-1">
-                                            Create an account?
-                                        </label>
-                                    </div>
-                                    <hr />
-                                    <div className="form-check my-3">
-                                        <input
-                                            className="form-check-input"
-                                            type="checkbox"
-                                            id="Address-1"
-                                            name="Address"
-                                            defaultValue="Address"
-                                        />
-                                        <label className="form-check-label" htmlFor="Address-1">
-                                            Ship to a different address?
-                                        </label>
-                                    </div>
-                                    <div className="form-item">
-                                        <textarea
-                                            name="text"
-                                            className="form-control"
-                                            spellCheck="false"
-                                            cols={30}
-                                            rows={11}
-                                            placeholder="Oreder Notes (Optional)"
-                                            defaultValue={""}
-                                        />
+                                        <input type="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>
                                 </div>
                                 <div className="col-md-12 col-lg-6 col-xl-5">
@@ -130,54 +117,34 @@ function Chackout() {
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <th scope="row">
-                                                        <div className="d-flex align-items-center mt-2">
-                                                            <img
-                                                                src="img/vegetable-item-2.jpg"
-                                                                className="img-fluid rounded-circle"
-                                                                style={{ width: 90, height: 90 }}
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                    </th>
-                                                    <td className="py-5">Awesome Brocoli</td>
-                                                    <td className="py-5">$69.00</td>
-                                                    <td className="py-5">2</td>
-                                                    <td className="py-5">$138.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        <div className="d-flex align-items-center mt-2">
-                                                            <img
-                                                                src="img/vegetable-item-5.jpg"
-                                                                className="img-fluid rounded-circle"
-                                                                style={{ width: 90, height: 90 }}
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                    </th>
-                                                    <td className="py-5">Potatoes</td>
-                                                    <td className="py-5">$69.00</td>
-                                                    <td className="py-5">2</td>
-                                                    <td className="py-5">$138.00</td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row">
-                                                        <div className="d-flex align-items-center mt-2">
-                                                            <img
-                                                                src="img/vegetable-item-3.png"
-                                                                className="img-fluid rounded-circle"
-                                                                style={{ width: 90, height: 90 }}
-                                                                alt=""
-                                                            />
-                                                        </div>
-                                                    </th>
-                                                    <td className="py-5">Big Banana</td>
-                                                    <td className="py-5">$69.00</td>
-                                                    <td className="py-5">2</td>
-                                                    <td className="py-5">$138.00</td>
-                                                </tr>
+
+                                                {
+
+                                                    cartBox?.map((item, index) => (
+                                                        <>
+                                                            <tr>
+                                                                <th scope="row">
+                                                                    <div className="d-flex align-items-center mt-2">
+                                                                        <img
+                                                                            src="./assets/images/pizza.jpg"
+                                                                            className="img-fluid rounded-circle"
+                                                                            style={{ width: 90, height: 90 }}
+                                                                            alt=""
+                                                                        />
+                                                                    </div>
+                                                                </th>
+                                                                <td className="py-5">{item.name}</td>
+                                                                <td className="py-5">${item.price}</td>
+                                                                <td className="py-5">2</td>
+                                                                <td className="py-5">$138.00</td>
+                                                            </tr>
+                                                        </>
+                                                    ))
+
+                                                }
+
+
+
                                                 <tr>
                                                     <th scope="row"></th>
                                                     <td className="py-5" />
@@ -191,113 +158,8 @@ function Chackout() {
                                                         </div>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <th scope="row"></th>
-                                                    <td className="py-5">
-                                                        <p className="mb-0 text-dark py-4">Shipping</p>
-                                                    </td>
-                                                    <td colSpan={3} className="py-5">
-                                                        <div className="form-check text-start">
-                                                            <input
-                                                                type="checkbox"
-                                                                className="form-check-input bg-primary border-0"
-                                                                id="Shipping-1"
-                                                                name="Shipping-1"
-                                                                defaultValue="Shipping"
-                                                            />
-                                                            <label
-                                                                className="form-check-label"
-                                                                htmlFor="Shipping-1"
-                                                            >
-                                                                Free Shipping
-                                                            </label>
-                                                        </div>
-                                                        <div className="form-check text-start">
-                                                            <input
-                                                                type="checkbox"
-                                                                className="form-check-input bg-primary border-0"
-                                                                id="Shipping-2"
-                                                                name="Shipping-1"
-                                                                defaultValue="Shipping"
-                                                            />
-                                                            <label
-                                                                className="form-check-label"
-                                                                htmlFor="Shipping-2"
-                                                            >
-                                                                Flat rate: $15.00
-                                                            </label>
-                                                        </div>
-                                                        <div className="form-check text-start">
-                                                            <input
-                                                                type="checkbox"
-                                                                className="form-check-input bg-primary border-0"
-                                                                id="Shipping-3"
-                                                                name="Shipping-1"
-                                                                defaultValue="Shipping"
-                                                            />
-                                                            <label
-                                                                className="form-check-label"
-                                                                htmlFor="Shipping-3"
-                                                            >
-                                                                Local Pickup: $8.00
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <th scope="row"></th>
-                                                    <td className="py-5">
-                                                        <p className="mb-0 text-dark text-uppercase py-3">
-                                                            TOTAL
-                                                        </p>
-                                                    </td>
-                                                    <td className="py-5" />
-                                                    <td className="py-5" />
-                                                    <td className="py-5">
-                                                        <div className="py-3 border-bottom border-top">
-                                                            <p className="mb-0 text-dark">$135.00</p>
-                                                        </div>
-                                                    </td>
-                                                </tr>
                                             </tbody>
                                         </table>
-                                    </div>
-                                    <div className="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
-                                        <div className="col-12">
-                                            <div className="form-check text-start my-3">
-                                                <input
-                                                    type="checkbox"
-                                                    className="form-check-input bg-primary border-0"
-                                                    id="Transfer-1"
-                                                    name="Transfer"
-                                                    defaultValue="Transfer"
-                                                />
-                                                <label className="form-check-label" htmlFor="Transfer-1">
-                                                    Direct Bank Transfer
-                                                </label>
-                                            </div>
-                                            <p className="text-start text-dark">
-                                                Make your payment directly into our bank account. Please use
-                                                your Order ID as the payment reference. Your order will not be
-                                                shipped until the funds have cleared in our account.
-                                            </p>
-                                        </div>
-                                    </div>
-                                    <div className="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
-                                        <div className="col-12">
-                                            <div className="form-check text-start my-3">
-                                                <input
-                                                    type="checkbox"
-                                                    className="form-check-input bg-primary border-0"
-                                                    id="Payments-1"
-                                                    name="Payments"
-                                                    defaultValue="Payments"
-                                                />
-                                                <label className="form-check-label" htmlFor="Payments-1">
-                                                    Check Payments
-                                                </label>
-                                            </div>
-                                        </div>
                                     </div>
                                     <div className="row g-4 text-center align-items-center justify-content-center border-bottom py-3">
                                         <div className="col-12">
@@ -333,7 +195,7 @@ function Chackout() {
                                     </div>
                                     <div className="row g-4 text-center align-items-center justify-content-center pt-4">
                                         <button
-                                            type="button"
+                                            type="submit"
                                             className="btn border-secondary py-3 px-4 text-uppercase w-100 text-primary"
                                         >
                                             Place Order

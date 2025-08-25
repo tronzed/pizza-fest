@@ -1,16 +1,19 @@
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
+import Loader from "./Loader";
 
 
 function Shop() {
 
     const [data, setData] = useState();
+    const [loader, setLoader] = useState(true);
 
     const pizzaData = async () => {
         let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
         let data = await res.json();
         setData(data);
+        setLoader(false);
     }
 
     const addCart = (id) => {
@@ -22,7 +25,6 @@ function Shop() {
         }).then(() => {
             pizzaData();
         })
-
     }
 
     useEffect(() => {
@@ -33,6 +35,7 @@ function Shop() {
 
         <>
             <Header />
+            <Loader loader={loader}/>
             {/* Fruits Shop Start*/}
             <div className="container-fluid fruite py-5">
                 <div className="container py-5">
@@ -342,7 +345,7 @@ function Shop() {
                                                             <p>{item.text}</p>
                                                             <div className="d-flex justify-content-between flex-lg-wrap">
                                                                 <p className="text-dark fs-5 fw-bold mb-0">${item.price}</p>
-                                                                <button onClick={() => addCart(item?.id)} href="#" className="btn border border-secondary rounded-pill px-3 text-primary">
+                                                                <button onClick={() => {addCart(item?.id); setLoader(true); }} href="#" className="btn border border-secondary rounded-pill px-3 text-primary">
                                                                     <i className="fa fa-shopping-bag me-2 text-primary" />
                                                                     Add to cart
                                                                 </button>
