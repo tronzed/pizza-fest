@@ -40,7 +40,7 @@ function Cart() {
         } else {
             setData([]);
             setLoader(false);
-
+            setCartCountAll([]);
             console.log('undone');
 
         }
