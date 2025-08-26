@@ -522,3 +522,7 @@
 .table tr td b {
     color: #000;
 }
+
+#navbarCollapse {
+    visibility: visible;
+}

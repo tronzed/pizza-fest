@@ -10,7 +10,7 @@ function Shop() {
 
     const [data, setData] = useState();
     const [loader, setLoader] = useState(true);
-    const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
+    const { cartReadAll } = useContext(MyContext);
 
 
     const pizzaData = async () => {

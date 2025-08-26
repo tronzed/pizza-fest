@@ -1,12 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MyContext } from "../App";
-import {cartRead33} from "../commonFunctions"
+import { cartRead33 } from "../commonFunctions"
 
 function Header() {
 
     const loc = useLocation();
-    const {cartCountAll,setCartCountAll,cartReadAll} = useContext(MyContext);
+    const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
 
     useEffect(() => {
         cartReadAll();
@@ -54,15 +54,10 @@ function Header() {
                             <Link to="/" className="navbar-brand">
                                 <h1 className="text-primary display-6">Pizza Fest</h1>
                             </Link>
-                            <button
-                                className="navbar-toggler py-2 px-3"
-                                type="button"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#navbarCollapse"
-                            >
-                                <span className="fa fa-bars text-primary" />
+                            <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                                <span class="fa fa-bars text-primary"></span>
                             </button>
-                            <div className=" navbar-collapse bg-white" >
+                            <div className="collapse navbar-collapse bg-white" id="navbarCollapse" >
                                 <div className="navbar-nav mx-auto">
 
 
@@ -86,7 +81,7 @@ function Header() {
                                             <Link to="/404" className="dropdown-item">404 Page</Link>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div className="d-flex m-3 me-0">
                                     <button
