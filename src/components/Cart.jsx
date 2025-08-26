@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
+import { MyContext } from "../App";
 
 function Cart() {
 
@@ -10,21 +11,22 @@ function Cart() {
     const [cartData, setCartData] = useState([]);
     const [loader, setLoader] = useState(true);
 
+    const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
+
+
     const cartRead = async () => {
         let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
         let data = await res.json();
 
         if (data !== null) {
-
             console.log('done');
-
             let data2 = Object?.entries(data)?.map(([key, value]) => ({
                 'firebaseId': key,
                 ...value,
             }))
 
             setCartData(data2);
-
+            cartReadAll();
             const productCart = [];
 
             for (let item of data2) {

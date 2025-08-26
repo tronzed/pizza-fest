@@ -22,6 +22,7 @@ function User() {
 
         <>
 
+            {console.log(orderData, "-----orderData------")}
 
             <Header />
 
@@ -33,6 +34,7 @@ function User() {
                                 <th scope="col">Order ID</th>
                                 <th scope="col">Customer Name</th>
                                 <th scope="col">Details</th>
+                                <th scope="col">items</th>
                                 <th scope="col">Total</th>
                                 <th scope="col">Actions</th>
                             </tr>
@@ -46,10 +48,25 @@ function User() {
                                             <td>1</td>
                                             <td>{item.name}</td>
                                             <td>
-                                                <b>Address:</b> {item.address}<br />
-                                                <b>Postcode:</b> {item.postcode}<br />
-                                                <b>Mobile:</b> {item.mobile}<br />
-                                                <b>Email:</b> {item.email}
+                                                <b>Address:</b><br /> {item.address}<br /><hr />
+                                                <b>Postcode:</b><br /> {item.postcode}<br /><hr />
+                                                <b>Mobile:</b><br /> {item.mobile}<br /><hr />
+                                                <b>Email:</b><br /> {item.email}
+                                            </td>
+                                            <td>
+
+                                                {
+
+                                                    item?.cartBox?.map((box, index) => (
+                                                        <>
+
+                                                            <p>{box?.name}</p>
+
+                                                        </>
+                                                    ))
+
+                                                }
+
                                             </td>
                                             <td></td>
                                             <td>

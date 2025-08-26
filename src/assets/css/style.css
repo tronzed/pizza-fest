@@ -514,3 +514,11 @@
 .inner_container_box {
     padding: 80px 0 60px;
 }
+
+.table tr td hr {
+    margin: 4px 0;
+}
+
+.table tr td b {
+    color: #000;
+}

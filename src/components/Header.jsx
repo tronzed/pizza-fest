@@ -1,21 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { MyContext } from "../App";
+import {cartRead33} from "../commonFunctions"
 
 function Header() {
 
     const loc = useLocation();
-    const [cartData, setCartData] = useState();
-
-    const cartRead = async () => {
-        let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
-        let data = await res.json();
-        let data2 = Object.values(data);
-        setCartData(data2);
-
-    }
+    const {cartCountAll,setCartCountAll,cartReadAll} = useContext(MyContext);
 
     useEffect(() => {
-        cartRead();
+        cartReadAll();
     }, []);
 
     return (
@@ -109,7 +103,7 @@ function Header() {
                                             className="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1"
                                             style={{ top: "-5px", left: 15, height: 20, minWidth: 20 }}
                                         >
-                                            {cartData?.length}
+                                            {cartCountAll?.length}
                                         </span>
                                     </Link>
 

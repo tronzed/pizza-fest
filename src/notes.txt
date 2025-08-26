@@ -12,8 +12,17 @@
 _______________________________________________
 
 
-- Checkout page 
-
 - add to cart count header
 
-- cart issue
+_______________________________________________
+
+
+- react topics to master 
+
+x useContext
+
+- frontend role
+
+- leetcode sheet
+
+- google interview quations

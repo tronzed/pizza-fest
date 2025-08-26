@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import Loader from "./Loader";
 import ProductItem from "./ProductItem";
+import { MyContext } from "../App";
 
 
 function Shop() {
 
     const [data, setData] = useState();
     const [loader, setLoader] = useState(true);
+    const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
+
 
     const pizzaData = async () => {
         let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
@@ -25,7 +28,9 @@ function Shop() {
             body: JSON.stringify(data)
         }).then(() => {
             pizzaData();
+            cartReadAll();
         })
+
     }
 
     useEffect(() => {
@@ -36,7 +41,7 @@ function Shop() {
 
         <>
             <Header />
-            
+
             <Loader loader={loader} />
             {/* Fruits Shop Start*/}
             <div className="container-fluid fruite py-5">
