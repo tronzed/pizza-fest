@@ -86,7 +86,7 @@ function Home() {
             <div className="tab-class text-center">
               <div className="row g-4">
                 <div className="col-lg-4 text-start">
-                  <h1>Our Organic Products</h1>
+                  <h1>Products</h1>
                 </div>
                 <div className="col-lg-8 text-end">
                   <ul className="nav nav-pills d-inline-flex text-center mb-5">

@@ -338,7 +338,7 @@ function Shop() {
 
                                         {data?.map((item, index) => (
                                             <>
-                                                <ProductItem name={item.name} text={item.text} price={item.price} addCart={() => addCart(item?.id)} setLoader={setLoader} />
+                                                <ProductItem name={item.name} idBox={item?.id} text={item.text} price={item.price} addCart={() => addCart(item?.id)} setLoader={setLoader} />
                                             </>
 
                                         ))}
