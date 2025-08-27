@@ -526,3 +526,20 @@
 #navbarCollapse {
     visibility: visible;
 }
+.empty_cart_box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.empty_cart_box .img_box {
+    max-width: 190px;
+}
+
+.page-header {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6)), url(/src/assets/images/cart-page-header-img.jpg?t=1756288039857);
+    background-position: center center;
+    background-repeat: repeat;
+    background-size: unset;
+}

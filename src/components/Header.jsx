@@ -67,7 +67,7 @@ function Header() {
 
                                     {/* <Link to="/single" className="nav-item nav-link">Shop Detail</Link> */}
 
-                                    <div className="nav-item dropdown">
+                                    {/* <div className="nav-item dropdown">
                                         <a
                                             href="#"
                                             className="nav-link dropdown-toggle"
@@ -80,7 +80,7 @@ function Header() {
                                             <Link to="/checkout" className="dropdown-item">Chackout</Link>
                                             <Link to="/404" className="dropdown-item">404 Page</Link>
                                         </div>
-                                    </div>
+                                    </div> */}
 
                                 </div>
                                 <div className="d-flex m-3 me-0">
@@ -120,9 +120,9 @@ function Header() {
                             <div className="container py-5">
                                 <div className="row g-5 align-items-center">
                                     <div className="col-md-12 col-lg-7">
-                                        <h4 className="mb-3 text-secondary">100% Organic Foods</h4>
+                                        <h4 className="mb-3 text-secondary">100% Organic</h4>
                                         <h1 className="mb-5 display-3 text-primary">
-                                            Organic Veggies &amp; Fruits Foods
+                                            Making Memories, One Slice at a Time
                                         </h1>
                                         <div className="position-relative mx-auto">
                                             <input
