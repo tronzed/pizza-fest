@@ -54,8 +54,8 @@ function Header() {
                             <Link to="/" className="navbar-brand">
                                 <h1 className="text-primary display-6">Pizza Fest</h1>
                             </Link>
-                            <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                                <span class="fa fa-bars text-primary"></span>
+                            <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                                <span className="fa fa-bars text-primary"></span>
                             </button>
                             <div className="collapse navbar-collapse bg-white" id="navbarCollapse" >
                                 <div className="navbar-nav mx-auto">

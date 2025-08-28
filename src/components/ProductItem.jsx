@@ -5,7 +5,7 @@ function ProductItem({ name, text, price, addCart, setLoader, idBox }) {
 
     const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
 
-    const resultBox = cartCountAll.find(item => item.id === idBox);
+    const resultBox = cartCountAll?.find(item => item?.id === idBox);
 
     return (
         <>
@@ -26,7 +26,7 @@ function ProductItem({ name, text, price, addCart, setLoader, idBox }) {
 
                             <button onClick={() => { addCart(); setLoader(true); }} href="#" className="btn border border-secondary rounded-pill px-3 text-primary">
                                 <i className="fa fa-shopping-bag me-2 text-primary" />
-                                {resultBox?.id === idBox ? "In Cart" : "Add to cart"}
+                                {resultBox?.id === idBox && resultBox?.id != null ? "In Cart" : "Add to cart"}
                             </button>
 
                         </div>

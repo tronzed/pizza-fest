@@ -18,17 +18,26 @@ function App() {
 
 
   const cartReadAll = async () => {
+
     let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
     let data = await res.json();
-    let data2 = await Object.values(data);
-    setCartCountAll(data2);
+
+    if (data) {
+      let data2 = await Object.values(data);
+      setCartCountAll(data2);
+    } else {
+      setCartCountAll([]);
+    }
+
+
+
   }
 
 
   return (
     <>
 
-      <MyContext.Provider value={{ cartCountAll, setCartCountAll,cartReadAll }}>
+      <MyContext.Provider value={{ cartCountAll, setCartCountAll, cartReadAll }}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
