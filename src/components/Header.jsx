@@ -144,7 +144,7 @@ function Header() {
                                         <div className="carousel-inner" role="listbox">
                                             <div className="carousel-item active rounded">
                                                 <img
-                                                    src="./assets/images/hero-img-1.png"
+                                                    src="./assets/images/hero-img-1.jpg"
                                                     className="img-fluid w-100 h-100 bg-secondary rounded"
                                                     alt="First slide"
                                                 />

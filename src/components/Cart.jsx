@@ -93,12 +93,10 @@ function Cart() {
                                         {data?.map((item, index) => (
 
                                             <tr key={index}>
-                                                {console.log(item, "-------items box-------")}
-
                                                 <th scope="row">
                                                     <div className="d-flex align-items-center">
                                                         <img
-                                                            src="./assets/images/pizza.jpg"
+                                                            src={`./assets/images/img_${item?.id}.jpg`}
                                                             className="img-fluid me-5 rounded-circle"
                                                             style={{ width: 80, height: 80 }}
                                                             alt=""

@@ -155,7 +155,7 @@ function Home() {
                       <div className="row g-4">
                         {data?.map((item, index) => (
                           <>
-                            <ProductItem name={item.name} text={item.text} price={item.price} addCart={() => addCart(item?.id)} setLoader={setLoader} />
+                            <ProductItem name={item.name} text={item.text} price={item.price} idBox={item?.id} addCart={() => addCart(item?.id)} setLoader={setLoader} />
                           </>
                         ))}
 

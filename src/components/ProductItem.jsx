@@ -13,7 +13,7 @@ function ProductItem({ name, text, price, addCart, setLoader, idBox }) {
                 <div className="rounded position-relative fruite-item">
                     <div className="fruite-img">
                         <img
-                            src="./assets/images/pizza.jpg"
+                            src={`./assets/images/img_${idBox}.jpg`}
                             className="img-fluid w-100 rounded-top"
                             alt=""
                         />
