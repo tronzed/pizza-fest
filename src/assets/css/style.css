@@ -543,3 +543,8 @@
     background-repeat: repeat;
     background-size: unset;
 }
+
+.logo_img {
+    max-width: 150px;
+    display: inline-block;
+}

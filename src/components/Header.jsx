@@ -52,7 +52,10 @@ function Header() {
 
 
                             <Link to="/" className="navbar-brand">
-                                <h1 className="text-primary display-6">Pizza Fest</h1>
+                                {/* <h1 className="text-primary display-6">Pizza Fest</h1> */}
+                            
+                                <span className="logo_img"><img className="img-fluid" src="./assets/images/logo_01.png" alt="" /></span>
+                            
                             </Link>
                             <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                                 <span className="fa fa-bars text-primary"></span>
