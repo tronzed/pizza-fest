@@ -36,9 +36,6 @@ function Header() {
                             </div>
                             <div className="top-link pe-2">
                                 <a href="#" className="text-white">
-                                    <small className="text-white mx-2">Privacy Policy</small>/
-                                </a>
-                                <a href="#" className="text-white">
                                     <small className="text-white mx-2">Terms of Use</small>/
                                 </a>
                                 <a href="#" className="text-white">
@@ -66,7 +63,7 @@ function Header() {
 
                                     <Link to="/" className="nav-item nav-link">Home</Link>
 
-                                    <Link to="/shop" className="nav-item nav-link">Shop</Link>
+                                    <Link to="/shop" className="nav-item nav-link">Menu</Link>
 
                                     {/* <Link to="/single" className="nav-item nav-link">Shop Detail</Link> */}
 
@@ -87,14 +84,6 @@ function Header() {
 
                                 </div>
                                 <div className="d-flex m-3 me-0">
-                                    <button
-                                        className="btn-search btn border border-secondary btn-md-square rounded-circle bg-white me-4"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#searchModal"
-                                    >
-                                        <i className="fas fa-search text-primary" />
-                                    </button>
-
                                     <Link to="/cart" className="position-relative me-4 my-auto">
                                         <i className="fa fa-shopping-bag fa-2x" />
                                         <span
@@ -127,20 +116,6 @@ function Header() {
                                         <h1 className="mb-5 display-3 text-primary">
                                             Making Memories, One Slice at a Time
                                         </h1>
-                                        <div className="position-relative mx-auto">
-                                            <input
-                                                className="form-control border-2 border-secondary w-75 py-3 px-4 rounded-pill"
-                                                type="number"
-                                                placeholder="Search"
-                                            />
-                                            <button
-                                                type="submit"
-                                                className="btn btn-primary border-2 border-secondary py-3 px-4 position-absolute rounded-pill text-white h-100"
-                                                style={{ top: 0, right: "25%" }}
-                                            >
-                                                Submit Now
-                                            </button>
-                                        </div>
                                     </div>
                                     <div className="col-md-12 col-lg-5">
 

@@ -4,17 +4,13 @@ function Footer() {
 
             <>
                 {/* Footer Start */}
-                <div className="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+                <div className="container-fluid bg-dark text-white-50 footer mt-5">
                     <div className="container py-5">
-                        <div
-                            className="pb-4 mb-4"
-                            style={{ borderBottom: "1px solid rgba(226, 175, 24, 0.5)" }}
-                        >
+                        <div>
                             <div className="row g-4">
                                 <div className="col-lg-6">
                                     <a href="#">
-                                        <h1 className="text-primary mb-0">Fruitables</h1>
-                                        <p className="text-secondary mb-0">Fresh products</p>
+                                        <span className="logo_img"><img className="img-fluid" src="./assets/images/logo_01.png" alt="" /></span>
                                     </a>
                                 </div>
                                 <div className="col-lg-6">

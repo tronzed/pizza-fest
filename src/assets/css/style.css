@@ -552,3 +552,18 @@
 .loader_box .animate_box {
     max-width: 250px;
 }
+
+h2.sec_heading {
+    font-size: 40px;
+    font-weight: 800;
+    margin-bottom: 35px;
+    color: #000;
+}
+
+.bg-dark {
+    background-color: #2a2a2a !important;
+}
+
+.inner_content_box {
+    min-height: 50vh;
+}

@@ -82,73 +82,10 @@ function Home() {
         </div>
         {/* Featurs Section End */}
         {/* Fruits Shop Start*/}
-        <div className="container-fluid fruite py-5">
-          <div className="container py-5">
+        <div className="container-fluid fruite">
+          <div className="container">
             <div className="tab-class text-center">
-              <div className="row g-4">
-                <div className="col-lg-4 text-start">
-                  <h1>Products</h1>
-                </div>
-                <div className="col-lg-8 text-end">
-                  <ul className="nav nav-pills d-inline-flex text-center mb-5">
-                    <li className="nav-item">
-                      <a
-                        className="d-flex m-2 py-2 bg-light rounded-pill active"
-                        data-bs-toggle="pill"
-                        href="#tab-1"
-                      >
-                        <span className="text-dark" style={{ width: 130 }}>
-                          All Products
-                        </span>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="d-flex py-2 m-2 bg-light rounded-pill"
-                        data-bs-toggle="pill"
-                        href="#tab-2"
-                      >
-                        <span className="text-dark" style={{ width: 130 }}>
-                          Vegetables
-                        </span>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="d-flex m-2 py-2 bg-light rounded-pill"
-                        data-bs-toggle="pill"
-                        href="#tab-3"
-                      >
-                        <span className="text-dark" style={{ width: 130 }}>
-                          Fruits
-                        </span>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="d-flex m-2 py-2 bg-light rounded-pill"
-                        data-bs-toggle="pill"
-                        href="#tab-4"
-                      >
-                        <span className="text-dark" style={{ width: 130 }}>
-                          Bread
-                        </span>
-                      </a>
-                    </li>
-                    <li className="nav-item">
-                      <a
-                        className="d-flex m-2 py-2 bg-light rounded-pill"
-                        data-bs-toggle="pill"
-                        href="#tab-5"
-                      >
-                        <span className="text-dark" style={{ width: 130 }}>
-                          Meat
-                        </span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              <h2 className="sec_heading">Delicious Pizza</h2>
               <div className="tab-content">
                 <div id="tab-1" className="tab-pane fade show p-0 active">
                   <div className="row g-4">
@@ -536,13 +473,13 @@ function Home() {
                 <a href="#">
                   <div className="service-item bg-secondary rounded border border-secondary">
                     <img
-                      src="./assets/images/featur-1.jpg"
+                      src="./assets/images/img_1.jpg"
                       className="img-fluid rounded-top w-100"
                       alt=""
                     />
                     <div className="px-4 rounded-bottom">
                       <div className="service-content bg-primary text-center p-4 rounded">
-                        <h5 className="text-white">Fresh Apples</h5>
+                        <h5 className="text-white">Fresh Pizza</h5>
                         <h3 className="mb-0">20% OFF</h3>
                       </div>
                     </div>
@@ -553,13 +490,13 @@ function Home() {
                 <a href="#">
                   <div className="service-item bg-dark rounded border border-dark">
                     <img
-                      src="./assets/images/featur-2.jpg"
+                      src="./assets/images/img_2.jpg"
                       className="img-fluid rounded-top w-100"
                       alt=""
                     />
                     <div className="px-4 rounded-bottom">
                       <div className="service-content bg-light text-center p-4 rounded">
-                        <h5 className="text-primary">Tasty Fruits</h5>
+                        <h5 className="text-primary">Tasty Pizza</h5>
                         <h3 className="mb-0">Free delivery</h3>
                       </div>
                     </div>
@@ -570,13 +507,13 @@ function Home() {
                 <a href="#">
                   <div className="service-item bg-primary rounded border border-primary">
                     <img
-                      src="./assets/images/featur-3.jpg"
+                      src="./assets/images/img_3.jpg"
                       className="img-fluid rounded-top w-100"
                       alt=""
                     />
                     <div className="px-4 rounded-bottom">
                       <div className="service-content bg-secondary text-center p-4 rounded">
-                        <h5 className="text-white">Exotic Vegitable</h5>
+                        <h5 className="text-white">Exotic Pizza</h5>
                         <h3 className="mb-0">Discount 30$</h3>
                       </div>
                     </div>
@@ -621,17 +558,6 @@ function Home() {
                   <div className="pizza_box">
                     <Lottie animationData={animationData} loop={true} />
                   </div>
-
-                  <div
-                    className="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute"
-                    style={{ width: 140, height: 140, top: 0, left: 0 }}
-                  >
-                    <h1 style={{ fontSize: 100 }}>1</h1>
-                    <div className="d-flex flex-column">
-                      <span className="h2 mb-0">50$</span>
-                      <span className="h4 text-muted mb-0">kg</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -661,7 +587,7 @@ function Home() {
                     </div>
                     <div className="col-6">
                       <a href="#" className="h5">
-                        Organic Tomato
+                        Pizza
                       </a>
                       <div className="d-flex my-3">
                         <i className="fas fa-star text-primary" />
@@ -694,7 +620,7 @@ function Home() {
                     </div>
                     <div className="col-6">
                       <a href="#" className="h5">
-                        Organic Tomato
+                        Pizza
                       </a>
                       <div className="d-flex my-3">
                         <i className="fas fa-star text-primary" />
@@ -727,7 +653,7 @@ function Home() {
                     </div>
                     <div className="col-6">
                       <a href="#" className="h5">
-                        Organic Tomato
+                        Pizza
                       </a>
                       <div className="d-flex my-3">
                         <i className="fas fa-star text-primary" />
@@ -760,7 +686,7 @@ function Home() {
                     </div>
                     <div className="col-6">
                       <a href="#" className="h5">
-                        Organic Tomato
+                        Pizza
                       </a>
                       <div className="d-flex my-3">
                         <i className="fas fa-star text-primary" />
@@ -793,7 +719,7 @@ function Home() {
                     </div>
                     <div className="col-6">
                       <a href="#" className="h5">
-                        Organic Tomato
+                        Pizza
                       </a>
                       <div className="d-flex my-3">
                         <i className="fas fa-star text-primary" />
@@ -826,7 +752,7 @@ function Home() {
                     </div>
                     <div className="col-6">
                       <a href="#" className="h5">
-                        Organic Tomato
+                        Pizza
                       </a>
                       <div className="d-flex my-3">
                         <i className="fas fa-star text-primary" />

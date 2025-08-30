@@ -10,16 +10,21 @@ function Cart() {
     const [data, setData] = useState([]);
     const [cartData, setCartData] = useState([]);
     const [loader, setLoader] = useState(true);
+    const [cartTotal, setCartTotal] = useState([]);
 
     const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
 
+    const cartTotalCount = () => {
+        const prices = data?.map(item => item?.price);
+        console.log(data, '------eeeee');
+        setCartTotal(prices);
+    }
 
     const cartRead = async () => {
         let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
         let data = await res.json();
 
         if (data !== null) {
-            console.log('done');
             let data2 = Object?.entries(data)?.map(([key, value]) => ({
                 'firebaseId': key,
                 ...value,
@@ -36,25 +41,21 @@ function Cart() {
             }
             setData(productCart);
             setLoader(false);
-
+            cartTotalCount();
         } else {
             setData([]);
             setLoader(false);
             setCartCountAll([]);
         }
-
     }
 
     const deleteData = (id) => {
-
         const cartBox = cartData.find(item => item?.id == id);
-
         fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/carts/${cartBox?.firebaseId}.json`, {
             method: "DELETE"
         }).then(() => {
             cartRead();
         });
-
     }
 
     useEffect(() => {
@@ -68,11 +69,10 @@ function Cart() {
             <Loader loader={loader} />
             <>
 
+                {console.log(cartTotal, '-----asd--------')}
 
-                <div className="container-fluid py-5">
+                <div className="container-fluid py-5 inner_content_box">
                     <div className="container py-5">
-
-                        {console.log(data?.length, "---------timpada---------")}
 
                         {data.length ? (<>
 
@@ -89,9 +89,7 @@ function Cart() {
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                         {data?.map((item, index) => (
-
                                             <tr key={index}>
                                                 <th scope="row">
                                                     <div className="d-flex align-items-center">
@@ -177,7 +175,6 @@ function Cart() {
                                                     <p className="mb-0">Flat rate: $3.00</p>
                                                 </div>
                                             </div>
-                                            <p className="mb-0 text-end">Shipping to Ukraine.</p>
                                         </div>
                                         <div className="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                             <h5 className="mb-0 ps-4 me-4">Total</h5>
