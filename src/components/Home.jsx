@@ -3,7 +3,8 @@ import Footer from "./Footer"
 import { useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import Loader from "./Loader";
-
+import Lottie from "lottie-react";
+import animationData from "../assets/images/loader/pizza_box_order.json";
 
 function Home() {
 
@@ -26,7 +27,7 @@ function Home() {
   return (
     <>
       <Header />
-      <Loader loader={loader}/>
+      <Loader loader={loader} />
 
       <>
         <div className="container-fluid featurs py-5 hide_me">
@@ -594,11 +595,11 @@ function Home() {
             <div className="row g-4 align-items-center">
               <div className="col-lg-6">
                 <div className="py-4">
-                  <h1 className="display-3 text-white">Fresh Exotic Fruits</h1>
-                  <p className="fw-normal display-3 text-dark mb-4">in Our Store</p>
+                  <h1 className="display-3 text-white">Fresh Exotic Pizzas</h1>
+                  <p className="fw-normal display-3 text-dark mb-4">in Our Kitchen</p>
                   <p className="mb-4 text-dark">
-                    The generated Lorem Ipsum is therefore always free from repetition
-                    injected humour, or non-characteristic words etc.
+                    Our handcrafted pizzas are always made with unique toppings, exciting flavors, and a perfect crust — never boring,
+                    never repetitive, and always full of fun twists that you won’t find anywhere else.
                   </p>
                   <a
                     href="#"
@@ -610,11 +611,17 @@ function Home() {
               </div>
               <div className="col-lg-6">
                 <div className="position-relative">
-                  <img
+
+                  {/* <img
                     src="./assets/images/baner-1.png"
                     className="img-fluid w-100 rounded"
                     alt=""
-                  />
+                  /> */}
+
+                  <div className="pizza_box">
+                    <Lottie animationData={animationData} loop={true} />
+                  </div>
+
                   <div
                     className="d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute"
                     style={{ width: 140, height: 140, top: 0, left: 0 }}
@@ -632,7 +639,7 @@ function Home() {
         </div>
         {/* Banner Section End */}
         {/* Bestsaler Product Start */}
-        <div className="container-fluid py-5">
+        <div className="container-fluid py-5 ">
           <div className="container py-5">
             <div className="text-center mx-auto mb-5" style={{ maxWidth: 700 }}>
               <h1 className="display-4">Bestseller Products</h1>
@@ -647,7 +654,7 @@ function Home() {
                   <div className="row align-items-center">
                     <div className="col-6">
                       <img
-                        src="./assets/images/best-product-1.jpg"
+                        src="./assets/images/img_1.jpg"
                         className="img-fluid rounded-circle w-100"
                         alt=""
                       />
@@ -680,7 +687,7 @@ function Home() {
                   <div className="row align-items-center">
                     <div className="col-6">
                       <img
-                        src="./assets/images/best-product-2.jpg"
+                        src="./assets/images/img_2.jpg"
                         className="img-fluid rounded-circle w-100"
                         alt=""
                       />
@@ -713,7 +720,7 @@ function Home() {
                   <div className="row align-items-center">
                     <div className="col-6">
                       <img
-                        src="./assets/images/best-product-3.jpg"
+                        src="./assets/images/img_3.jpg"
                         className="img-fluid rounded-circle w-100"
                         alt=""
                       />
@@ -746,7 +753,7 @@ function Home() {
                   <div className="row align-items-center">
                     <div className="col-6">
                       <img
-                        src="./assets/images/best-product-4.jpg"
+                        src="./assets/images/img_4.jpg"
                         className="img-fluid rounded-circle w-100"
                         alt=""
                       />
@@ -779,7 +786,7 @@ function Home() {
                   <div className="row align-items-center">
                     <div className="col-6">
                       <img
-                        src="./assets/images/best-product-5.jpg"
+                        src="./assets/images/img_5.jpg"
                         className="img-fluid rounded-circle w-100"
                         alt=""
                       />
@@ -812,7 +819,7 @@ function Home() {
                   <div className="row align-items-center">
                     <div className="col-6">
                       <img
-                        src="./assets/images/best-product-6.jpg"
+                        src="./assets/images/img_6.jpg"
                         className="img-fluid rounded-circle w-100"
                         alt=""
                       />
@@ -840,122 +847,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-              <div className="col-md-6 col-lg-6 col-xl-3">
-                <div className="text-center">
-                  <img
-                    src="./assets/images/fruite-item-1.jpg"
-                    className="img-fluid rounded"
-                    alt=""
-                  />
-                  <div className="py-4">
-                    <a href="#" className="h5">
-                      Organic Tomato
-                    </a>
-                    <div className="d-flex my-3 justify-content-center">
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star" />
-                    </div>
-                    <h4 className="mb-3">3.12 $</h4>
-                    <a
-                      href="#"
-                      className="btn border border-secondary rounded-pill px-3 text-primary"
-                    >
-                      <i className="fa fa-shopping-bag me-2 text-primary" /> Add to
-                      cart
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6 col-lg-6 col-xl-3">
-                <div className="text-center">
-                  <img
-                    src="./assets/images/fruite-item-2.jpg"
-                    className="img-fluid rounded"
-                    alt=""
-                  />
-                  <div className="py-4">
-                    <a href="#" className="h5">
-                      Organic Tomato
-                    </a>
-                    <div className="d-flex my-3 justify-content-center">
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star" />
-                    </div>
-                    <h4 className="mb-3">3.12 $</h4>
-                    <a
-                      href="#"
-                      className="btn border border-secondary rounded-pill px-3 text-primary"
-                    >
-                      <i className="fa fa-shopping-bag me-2 text-primary" /> Add to
-                      cart
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6 col-lg-6 col-xl-3">
-                <div className="text-center">
-                  <img
-                    src="./assets/images/fruite-item-3.jpg"
-                    className="img-fluid rounded"
-                    alt=""
-                  />
-                  <div className="py-4">
-                    <a href="#" className="h5">
-                      Organic Tomato
-                    </a>
-                    <div className="d-flex my-3 justify-content-center">
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star" />
-                    </div>
-                    <h4 className="mb-3">3.12 $</h4>
-                    <a
-                      href="#"
-                      className="btn border border-secondary rounded-pill px-3 text-primary"
-                    >
-                      <i className="fa fa-shopping-bag me-2 text-primary" /> Add to
-                      cart
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-6 col-lg-6 col-xl-3">
-                <div className="text-center">
-                  <img
-                    src="./assets/images/fruite-item-4.jpg"
-                    className="img-fluid rounded"
-                    alt=""
-                  />
-                  <div className="py-2">
-                    <a href="#" className="h5">
-                      Organic Tomato
-                    </a>
-                    <div className="d-flex my-3 justify-content-center">
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star text-primary" />
-                      <i className="fas fa-star" />
-                    </div>
-                    <h4 className="mb-3">3.12 $</h4>
-                    <a
-                      href="#"
-                      className="btn border border-secondary rounded-pill px-3 text-primary"
-                    >
-                      <i className="fa fa-shopping-bag me-2 text-primary" /> Add to
-                      cart
-                    </a>
-                  </div>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>
