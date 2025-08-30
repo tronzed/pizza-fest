@@ -11,13 +11,19 @@ function Cart() {
     const [cartData, setCartData] = useState([]);
     const [loader, setLoader] = useState(true);
     const [cartTotal, setCartTotal] = useState([]);
+    const [cartNum, setCartNum] = useState();
 
     const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
 
     const cartTotalCount = () => {
-        const prices = data?.map(item => item?.price);
-        console.log(data, '------eeeee');
-        setCartTotal(prices);
+
+        let box = 0;
+
+        for (let i = 0; i <= cartTotal.length - 1; i++) {
+            box += parseInt(cartTotal[i]);
+        }
+        setCartNum(box)
+
     }
 
     const cartRead = async () => {
@@ -33,15 +39,18 @@ function Cart() {
             setCartData(data2);
             cartReadAll();
             const productCart = [];
+            const CartPriceSumBox = [];
 
             for (let item of data2) {
                 let res = await fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${item.id - 1}.json`);
                 let data = await res.json();
                 productCart.push(data);
+                CartPriceSumBox.push(data.price);
             }
             setData(productCart);
+            setCartTotal(CartPriceSumBox);
             setLoader(false);
-            cartTotalCount();
+
         } else {
             setData([]);
             setLoader(false);
@@ -62,14 +71,17 @@ function Cart() {
         cartRead();
     }, [])
 
+
+    useEffect(() => {
+        cartTotalCount();
+    }, [cartTotal])
+
     return (
 
         <>
             <Header />
             <Loader loader={loader} />
             <>
-
-                {console.log(cartTotal, '-----asd--------')}
 
                 <div className="container-fluid py-5 inner_content_box">
                     <div className="container py-5">
@@ -138,9 +150,7 @@ function Cart() {
                                                     </button>
                                                 </td>
                                             </tr>
-
                                         ))}
-
                                     </tbody>
                                 </table>
                             </div>
@@ -167,7 +177,7 @@ function Cart() {
                                             </h1>
                                             <div className="d-flex justify-content-between mb-4">
                                                 <h5 className="mb-0 me-4">Subtotal:</h5>
-                                                <p className="mb-0">$96.00</p>
+                                                <p className="mb-0">{cartNum}</p>
                                             </div>
                                             <div className="d-flex justify-content-between">
                                                 <h5 className="mb-0 me-4">Shipping</h5>
@@ -178,7 +188,7 @@ function Cart() {
                                         </div>
                                         <div className="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                             <h5 className="mb-0 ps-4 me-4">Total</h5>
-                                            <p className="mb-0 pe-4">$99.00</p>
+                                            <p className="mb-0 pe-4">{cartNum+3}</p>
                                         </div>
                                         <Link
                                             className="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
