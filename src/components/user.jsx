@@ -22,8 +22,6 @@ function User() {
 
         <>
 
-            {console.log(orderData, "-----orderData------")}
-
             <Header />
 
             <div className="container inner_container_box">

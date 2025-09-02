@@ -12,7 +12,6 @@ function Shop() {
     const [loader, setLoader] = useState(true);
     const { cartReadAll } = useContext(MyContext);
 
-
     const pizzaData = async () => {
         let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
         let data = await res.json();
@@ -30,7 +29,6 @@ function Shop() {
             pizzaData();
             cartReadAll();
         })
-
     }
 
     useEffect(() => {

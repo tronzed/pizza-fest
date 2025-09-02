@@ -16,14 +16,11 @@ function Cart() {
     const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
 
     const cartTotalCount = () => {
-
         let box = 0;
-
         for (let i = 0; i <= cartTotal.length - 1; i++) {
             box += parseInt(cartTotal[i]);
         }
         setCartNum(box)
-
     }
 
     const cartRead = async () => {

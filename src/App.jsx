@@ -16,9 +16,7 @@ function App() {
 
   const [cartCountAll, setCartCountAll] = useState();
 
-
   const cartReadAll = async () => {
-
     let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
     let data = await res.json();
 
@@ -28,9 +26,6 @@ function App() {
     } else {
       setCartCountAll([]);
     }
-
-
-
   }
 
 
