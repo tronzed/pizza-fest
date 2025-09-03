@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
+import { MyContext } from "../App";
 
 
 function Chackout() {
@@ -11,10 +12,21 @@ function Chackout() {
     const [postcode, setPostcode] = useState();
     const [mobile, setMobile] = useState();
     const [email, setEmail] = useState();
-
-
     const [cartBox, setCartBox] = useState();
+
     const navigate = useNavigate();
+
+
+    const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
+
+
+    function deleteCart() {
+        fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json', {
+            method: "DELETE"
+        }).then(() => {
+            cartReadAll();
+        })
+    }
 
 
     const addOrder = async (e) => {
@@ -25,7 +37,7 @@ function Chackout() {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data)
         }).then(() => {
-            console.log('added');
+            deleteCart();
             navigate('/order-success');
         });
     }

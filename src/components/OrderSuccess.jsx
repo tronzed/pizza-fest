@@ -3,12 +3,11 @@ import Header from "./Header";
 import Footer from "./Footer";
 import animationData from "../assets/images/loader/delivery_guy.json";
 
-
 function OrderSuccess() {
+
     return (
 
         <>
-
             <Header />
 
             <div className="container delivery_guy_box">
@@ -18,14 +17,12 @@ function OrderSuccess() {
                         <Lottie animationData={animationData} loop={true} />
                     </div>
                     <div className="col-sm-6 text_box">
-                            <h2>Order Successful</h2>
-                            <p>Delivery on it's way</p>
+                        <h2>Order Successful</h2>
+                        <p>Delivery on it's way</p>
                     </div>
                 </div>
 
-                <div className="order_guy">
-                </div>
-
+             
             </div>
 
             <Footer />
