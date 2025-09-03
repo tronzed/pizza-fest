@@ -1,15 +1,19 @@
 import Header from "./Header";
 import Footer from "./Footer"
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ProductItem from "./ProductItem";
 import Loader from "./Loader";
 import Lottie from "lottie-react";
 import animationData from "../assets/images/loader/pizza_box_order.json";
+import { MyContext } from "../App";
 
 function Home() {
 
   const [data, setData] = useState();
   const [loader, setLoader] = useState(true);
+
+  const { cartReadAll } = useContext(MyContext);
+
 
   const pizzaData = async () => {
     let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
@@ -17,6 +21,19 @@ function Home() {
     setData(data);
     setLoader(false);
   }
+
+  const addCart = (id) => {
+    const data = { id }
+    fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json', {
+      method: 'POST',
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    }).then(() => {
+      pizzaData();
+      cartReadAll();
+    })
+  }
+
 
 
   useEffect(() => {
