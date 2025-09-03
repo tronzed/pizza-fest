@@ -4,3 +4,20 @@
     display: none;
 }
 
+.delivery_guy_box .text_box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.delivery_guy_box .text_box h2 {
+    font-size: 40px;
+    font-weight: 800;
+    color: #f34141;
+}
+
+.delivery_guy_box .text_box p {
+    font-size: 20px;
+    font-weight: 800;
+    color: #000;
+}

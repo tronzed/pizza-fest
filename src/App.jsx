@@ -10,6 +10,7 @@ import Chackout from './components/Chackout'
 import NotFound from './components/NotFound'
 import User from './components/user'
 import { createContext, useState, useContext } from 'react'
+import OrderSuccess from './components/OrderSuccess'
 export const MyContext = createContext();
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/checkout" element={<Chackout />} />
             <Route path="/user" element={<User />} />
+            <Route path="/order-success" element={<OrderSuccess />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

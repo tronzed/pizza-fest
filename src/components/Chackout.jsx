@@ -26,7 +26,7 @@ function Chackout() {
             body: JSON.stringify(data)
         }).then(() => {
             console.log('added');
-            navigate('/User');
+            navigate('/order-success');
         });
     }
 
@@ -58,8 +58,6 @@ function Chackout() {
 
         <>
             <Header />
-
-            {console.log(cartBox, "-------vijeta")}
 
             <>
                 {/* Checkout Page Start */}
