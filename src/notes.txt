@@ -26,3 +26,21 @@ x useContext
 - leetcode sheet
 
 - google interview quations
+
+_______________________________________________
+
+header detail
+
+banner detail
+
+best seller product
+
+logo 
+
+menu page search
+
+menu page sorting 
+
+sidebar link active
+
+upload image in react and firebase

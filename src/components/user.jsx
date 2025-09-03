@@ -34,7 +34,6 @@ function User() {
                                 <th scope="col">Details</th>
                                 <th scope="col">items</th>
                                 <th scope="col">Total</th>
-                                <th scope="col">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -52,25 +51,15 @@ function User() {
                                                 <b>Email:</b><br /> {item.email}
                                             </td>
                                             <td>
-
                                                 {
-
                                                     item?.cartBox?.map((box, index) => (
                                                         <>
-
                                                             <p>{box?.name}</p>
-
                                                         </>
                                                     ))
-
                                                 }
-
                                             </td>
                                             <td></td>
-                                            <td>
-                                                <button class="btn btn-sm btn-success">Approve</button>
-                                                <button class="btn btn-sm btn-danger">Cancel</button>
-                                            </td>
                                         </tr>
 
                                     </>

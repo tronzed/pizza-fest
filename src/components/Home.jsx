@@ -11,6 +11,7 @@ function Home() {
 
   const [data, setData] = useState();
   const [loader, setLoader] = useState(true);
+  const [bestsalerData, setBestsalerData] = useState([]);
 
   const { cartReadAll } = useContext(MyContext);
 
@@ -19,6 +20,10 @@ function Home() {
     let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
     let data = await res.json();
     setData(data);
+
+    let data2 = data.filter((item) => item.bestSeller === true)
+    setBestsalerData(data2)
+
     setLoader(false);
   }
 
@@ -45,6 +50,8 @@ function Home() {
     <>
       <Header />
       <Loader loader={loader} />
+
+      {console.log(bestsalerData, "------------bestsalerData-----------")}
 
       <>
         <div className="container-fluid featurs py-5 hide_me">
@@ -592,204 +599,55 @@ function Home() {
               </p>
             </div>
             <div className="row g-4">
-              <div className="col-lg-6 col-xl-4">
-                <div className="p-4 rounded bg-light">
-                  <div className="row align-items-center">
-                    <div className="col-6">
-                      <img
-                        src="./assets/images/img_1.jpg"
-                        className="img-fluid rounded-circle w-100"
-                        alt=""
-                      />
-                    </div>
-                    <div className="col-6">
-                      <a href="#" className="h5">
-                        Pizza
-                      </a>
-                      <div className="d-flex my-3">
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star" />
+
+
+
+              {
+                bestsalerData.map((item, index) => (
+                  <>
+
+                    {/* <div className="col-lg-6 col-xl-4">
+                      <div className="p-4 rounded bg-light">
+                        <div className="row align-items-center">
+                          <div className="col-6">
+                            <img
+                              src={`./assets/images/img_${index+1}.jpg`}
+                              className="img-fluid rounded-circle w-100"
+                              alt=""
+                            />
+                          </div>
+                          <div className="col-6">
+                            <a href="#" className="h5">
+                              {item.name}
+                            </a>
+                            <div className="d-flex my-3">
+                              <i className="fas fa-star text-primary" />
+                              <i className="fas fa-star text-primary" />
+                              <i className="fas fa-star text-primary" />
+                              <i className="fas fa-star text-primary" />
+                              <i className="fas fa-star" />
+                            </div>
+                            <h4 className="mb-3">${item.price}</h4>
+                            <button
+                               onClick={()=>addCart(item.name)}
+                              className="btn border border-secondary rounded-pill px-3 text-primary"
+                            >
+                              <i className="fa fa-shopping-bag me-2 text-primary" /> Add to
+                              cart
+                            </button>
+                          </div>
+                        </div>
                       </div>
-                      <h4 className="mb-3">3.12 $</h4>
-                      <a
-                        href="#"
-                        className="btn border border-secondary rounded-pill px-3 text-primary"
-                      >
-                        <i className="fa fa-shopping-bag me-2 text-primary" /> Add to
-                        cart
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-xl-4">
-                <div className="p-4 rounded bg-light">
-                  <div className="row align-items-center">
-                    <div className="col-6">
-                      <img
-                        src="./assets/images/img_2.jpg"
-                        className="img-fluid rounded-circle w-100"
-                        alt=""
-                      />
-                    </div>
-                    <div className="col-6">
-                      <a href="#" className="h5">
-                        Pizza
-                      </a>
-                      <div className="d-flex my-3">
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star" />
-                      </div>
-                      <h4 className="mb-3">3.12 $</h4>
-                      <a
-                        href="#"
-                        className="btn border border-secondary rounded-pill px-3 text-primary"
-                      >
-                        <i className="fa fa-shopping-bag me-2 text-primary" /> Add to
-                        cart
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-xl-4">
-                <div className="p-4 rounded bg-light">
-                  <div className="row align-items-center">
-                    <div className="col-6">
-                      <img
-                        src="./assets/images/img_3.jpg"
-                        className="img-fluid rounded-circle w-100"
-                        alt=""
-                      />
-                    </div>
-                    <div className="col-6">
-                      <a href="#" className="h5">
-                        Pizza
-                      </a>
-                      <div className="d-flex my-3">
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star" />
-                      </div>
-                      <h4 className="mb-3">3.12 $</h4>
-                      <a
-                        href="#"
-                        className="btn border border-secondary rounded-pill px-3 text-primary"
-                      >
-                        <i className="fa fa-shopping-bag me-2 text-primary" /> Add to
-                        cart
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-xl-4">
-                <div className="p-4 rounded bg-light">
-                  <div className="row align-items-center">
-                    <div className="col-6">
-                      <img
-                        src="./assets/images/img_4.jpg"
-                        className="img-fluid rounded-circle w-100"
-                        alt=""
-                      />
-                    </div>
-                    <div className="col-6">
-                      <a href="#" className="h5">
-                        Pizza
-                      </a>
-                      <div className="d-flex my-3">
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star" />
-                      </div>
-                      <h4 className="mb-3">3.12 $</h4>
-                      <a
-                        href="#"
-                        className="btn border border-secondary rounded-pill px-3 text-primary"
-                      >
-                        <i className="fa fa-shopping-bag me-2 text-primary" /> Add to
-                        cart
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-xl-4">
-                <div className="p-4 rounded bg-light">
-                  <div className="row align-items-center">
-                    <div className="col-6">
-                      <img
-                        src="./assets/images/img_5.jpg"
-                        className="img-fluid rounded-circle w-100"
-                        alt=""
-                      />
-                    </div>
-                    <div className="col-6">
-                      <a href="#" className="h5">
-                        Pizza
-                      </a>
-                      <div className="d-flex my-3">
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star" />
-                      </div>
-                      <h4 className="mb-3">3.12 $</h4>
-                      <a
-                        href="#"
-                        className="btn border border-secondary rounded-pill px-3 text-primary"
-                      >
-                        <i className="fa fa-shopping-bag me-2 text-primary" /> Add to
-                        cart
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="col-lg-6 col-xl-4">
-                <div className="p-4 rounded bg-light">
-                  <div className="row align-items-center">
-                    <div className="col-6">
-                      <img
-                        src="./assets/images/img_6.jpg"
-                        className="img-fluid rounded-circle w-100"
-                        alt=""
-                      />
-                    </div>
-                    <div className="col-6">
-                      <a href="#" className="h5">
-                        Pizza
-                      </a>
-                      <div className="d-flex my-3">
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star text-primary" />
-                        <i className="fas fa-star" />
-                      </div>
-                      <h4 className="mb-3">3.12 $</h4>
-                      <a
-                        href="#"
-                        className="btn border border-secondary rounded-pill px-3 text-primary"
-                      >
-                        <i className="fa fa-shopping-bag me-2 text-primary" /> Add to
-                        cart
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    </div> */}
+
+                    <ProductItem name={item.name} text={item.text} price={item.price} idBox={item?.id} addCart={() => addCart(item?.id)} setLoader={setLoader} />
+
+                  </>
+                ))
+              }
+
+
+
 
             </div>
           </div>
