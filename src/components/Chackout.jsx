@@ -122,8 +122,6 @@ function Chackout() {
                                                     <th scope="col">Products</th>
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Price</th>
-                                                    <th scope="col">Quantity</th>
-                                                    <th scope="col">Total</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -136,17 +134,15 @@ function Chackout() {
                                                                 <th scope="row">
                                                                     <div className="d-flex align-items-center mt-2">
                                                                         <img
-                                                                            src="./assets/images/pizza.jpg"
+                                                                            src={`./assets/images/img_${index+1}.jpg`}
                                                                             className="img-fluid rounded-circle"
                                                                             style={{ width: 90, height: 90 }}
                                                                             alt=""
                                                                         />
                                                                     </div>
                                                                 </th>
-                                                                <td className="py-5">{item.name}</td>
-                                                                <td className="py-5">${item.price}</td>
-                                                                <td className="py-5">2</td>
-                                                                <td className="py-5">$138.00</td>
+                                                                <td className="py-5">{item?.name}</td>
+                                                                <td className="py-5">${item?.price}</td>
                                                             </tr>
                                                         </>
                                                     ))

@@ -92,8 +92,6 @@ function Cart() {
                                             <th scope="col">Products</th>
                                             <th scope="col">Name</th>
                                             <th scope="col">Price</th>
-                                            <th scope="col">Quantity</th>
-                                            <th scope="col">Total</th>
                                             <th scope="col">Handle</th>
                                         </tr>
                                     </thead>
@@ -116,7 +114,7 @@ function Cart() {
                                                 <td>
                                                     <p className="mb-0 mt-4">{item?.price}$</p>
                                                 </td>
-                                                <td>
+                                                {/* <td>
                                                     <div
                                                         className="input-group quantity mt-4"
                                                         style={{ width: 100 }}
@@ -137,10 +135,8 @@ function Cart() {
                                                             </button>
                                                         </div>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    <p className="mb-0 mt-4">{item?.id}</p>
-                                                </td>
+                                                </td> */}
+                                             
                                                 <td>
                                                     <button onClick={() => { deleteData(item?.id); setLoader(true) }} className="btn btn-md rounded-circle bg-light border mt-4">
                                                         <i className="fa fa-times text-danger" />
@@ -174,7 +170,7 @@ function Cart() {
                                             </h1>
                                             <div className="d-flex justify-content-between mb-4">
                                                 <h5 className="mb-0 me-4">Subtotal:</h5>
-                                                <p className="mb-0">{cartNum}</p>
+                                                <p className="mb-0">${cartNum}</p>
                                             </div>
                                             <div className="d-flex justify-content-between">
                                                 <h5 className="mb-0 me-4">Shipping</h5>
@@ -185,7 +181,7 @@ function Cart() {
                                         </div>
                                         <div className="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                             <h5 className="mb-0 ps-4 me-4">Total</h5>
-                                            <p className="mb-0 pe-4">{cartNum+3}</p>
+                                            <p className="mb-0 pe-4">${cartNum+3}</p>
                                         </div>
                                         <Link
                                             className="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"

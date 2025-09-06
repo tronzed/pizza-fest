@@ -4,6 +4,7 @@ import Header from "./Header";
 import Loader from "./Loader";
 import ProductItem from "./ProductItem";
 import { MyContext } from "../App";
+import firebase from "firebase/compat/app";
 
 
 function Shop() {
@@ -15,7 +16,14 @@ function Shop() {
     const pizzaData = async () => {
         let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
         let data = await res.json();
-        setData(data);
+
+
+        let data2 = Object.entries(data).map(([key, value]) => ({
+            firebaseID:key,
+            ...value
+        }));
+
+        setData(data2);
         setLoader(false);
     }
 
@@ -39,6 +47,8 @@ function Shop() {
 
         <>
             <Header />
+
+            {console.log(data, '-------data--------')}
 
             <Loader loader={loader} />
             {/* Fruits Shop Start*/}
