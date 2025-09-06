@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { MyContext } from "../App";
 
-function ProductItem({ name, text, price, addCart, setLoader, idBox }) {
+function ProductItem({ name, text, price, addCart, setLoader, idBox, imgUrl }) {
 
     const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
 
@@ -12,11 +12,25 @@ function ProductItem({ name, text, price, addCart, setLoader, idBox }) {
             <div className="col-md-6 col-lg-6 col-xl-3">
                 <div className="rounded position-relative fruite-item">
                     <div className="fruite-img">
-                        <img
-                            src={`./assets/images/img_${idBox}.jpg`}
-                            className="img-fluid w-100 rounded-top"
-                            alt=""
-                        />
+
+                        {imgUrl ? (
+                            <>
+                                <img
+                                    src={imgUrl}
+                                    className="img-fluid w-100 rounded-top"
+                                    alt=""
+                                />
+                            </>
+                        ) : (
+                            <>
+                                <img
+                                    src={`./assets/images/img_${idBox}.jpg`}
+                                    className="img-fluid w-100 rounded-top"
+                                    alt=""
+                                />
+                            </>
+                        )}
+
                     </div>
                     <div className="p-4 border border-secondary border-top-0 rounded-bottom">
                         <h4>{name}</h4>

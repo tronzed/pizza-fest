@@ -123,7 +123,7 @@ function Home() {
                       <div className="row g-4">
                         {data?.map((item, index) => (
                           <>
-                            <ProductItem name={item.name} text={item.text} price={item.price} idBox={item?.id} addCart={() => addCart(item?.id)} setLoader={setLoader} />
+                            <ProductItem imgUrl={item?.img_url} name={item.name} text={item.text} price={item.price} idBox={item?.id} addCart={() => addCart(item?.id)} setLoader={setLoader} />
                           </>
                         ))}
 

@@ -6,7 +6,6 @@ import ProductItem from "./ProductItem";
 import { MyContext } from "../App";
 import firebase from "firebase/compat/app";
 
-
 function Shop() {
 
     const [data, setData] = useState();
@@ -16,7 +15,6 @@ function Shop() {
     const pizzaData = async () => {
         let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
         let data = await res.json();
-
 
         let data2 = Object.entries(data).map(([key, value]) => ({
             firebaseID:key,
@@ -47,8 +45,6 @@ function Shop() {
 
         <>
             <Header />
-
-            {console.log(data, '-------data--------')}
 
             <Loader loader={loader} />
             {/* Fruits Shop Start*/}
@@ -346,7 +342,7 @@ function Shop() {
 
                                         {data?.map((item, index) => (
                                             <>
-                                                <ProductItem key={index} name={item.name} idBox={item?.id} text={item.text} price={item.price} addCart={() => addCart(item?.id)} setLoader={setLoader} />
+                                                <ProductItem imgUrl={item?.img_url} key={index} name={item.name} idBox={item?.id} text={item.text} price={item.price} addCart={() => addCart(item?.id)} setLoader={setLoader} />
                                             </>
                                         ))}
 
