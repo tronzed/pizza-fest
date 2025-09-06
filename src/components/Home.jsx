@@ -18,7 +18,13 @@ function Home() {
 
   const pizzaData = async () => {
     let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
-    let data = await res.json();
+    let resdata = await res.json();
+
+    let data = Object.entries(resdata).map(([key,value])=>({
+      firebaseID:key,
+      ...value
+    }));
+
     setData(data);
 
     let data2 = data.filter((item) => item.bestSeller === true)
