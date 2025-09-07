@@ -342,7 +342,7 @@ function Shop() {
 
                                         {data?.map((item, index) => (
                                             <>
-                                                <ProductItem imgUrl={item?.img_url} key={index} name={item.name} idBox={item?.id} text={item.text} price={item.price} addCart={() => addCart(item?.id)} setLoader={setLoader} />
+                                                <ProductItem imgUrl={item?.img_url} key={index} name={item.name} idBox={item?.id} text={item.text} price={item.price} addCart={() => addCart(item?.firebaseID)} setLoader={setLoader} />
                                             </>
                                         ))}
 

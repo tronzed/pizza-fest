@@ -29,7 +29,7 @@ function Cart() {
 
         if (data !== null) {
             let data2 = Object?.entries(data)?.map(([key, value]) => ({
-                'firebaseId': key,
+                'firebaseID': key,
                 ...value,
             }))
 
@@ -39,7 +39,7 @@ function Cart() {
             const CartPriceSumBox = [];
 
             for (let item of data2) {
-                let res = await fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${item.id - 1}.json`);
+                let res = await fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${item.id}.json`);
                 let data = await res.json();
                 productCart.push(data);
                 CartPriceSumBox.push(data.price);

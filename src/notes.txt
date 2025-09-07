@@ -1,46 +1,34 @@
 
-- Add loader first
-
-- Finish cart page
-
-- Finish checkout page
-
-- Finish order page
-
-- Finish home page
+x Add loader first
+x Finish cart page
+x Finish checkout page
+x Finish order page
+x Finish home page
 
 _______________________________________________
 
-
-- add to cart count header
-
+x add to cart count header
 _______________________________________________
-
 
 - react topics to master 
-
 x useContext
-
 - frontend role
-
 - leetcode sheet
-
 - google interview quations
 
 _______________________________________________
 
-header detail
+Pizza-fest 
 
-banner detail
+- login and signup page
+- empty cart button on cart page
+- user page with user detail
 
-best seller product
+_______________________________________________
 
-logo 
 
-menu page search
+Pizza-fest 
 
-menu page sorting 
+- store detail page
 
-sidebar link active
-
-upload image in react and firebase
+- delete button on listing and single page
