@@ -31,4 +31,14 @@ Pizza-fest
 
 - store detail page
 
-- delete button on listing and single page
+x delete button on listing and single page
+
+- Render order and product list in decending order 
+
+- add cooming soon page
+
+- add food review section for food items with history of reives by order
+
+- add time and date for orders
+
+_______________________________________________
