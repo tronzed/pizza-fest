@@ -43,7 +43,7 @@ function Cart() {
             for (let item of data2) {
                 let res = await fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${item.id}.json`);
                 let data = await res.json();
-                productCart.push({...data,fireID:item.id});
+                productCart.push({ ...data, fireID: item.id });
                 CartPriceSumBox.push(data?.price);
             }
             setData(productCart);
@@ -65,9 +65,17 @@ function Cart() {
             cartRead();
         });
 
-        console.log(id, '---------id-------------');
-        console.log(cartData, '---------cartData-------------');
-        console.log(cartBox, '---------cartBox-------------');
+
+    }
+
+
+
+    const emptyCart = (id) => {
+        fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json`, {
+            method: "DELETE"
+        }).then(() => {
+            cartRead();
+        });
 
     }
 
@@ -154,18 +162,37 @@ function Cart() {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="mt-5">
-                                <input
-                                    type="text"
-                                    className="border-0 border-bottom rounded me-5 py-3 mb-4"
-                                    placeholder="Coupon Code"
-                                />
-                                <button
-                                    className="btn border-secondary rounded-pill px-4 py-3 text-primary"
-                                    type="button"
-                                >
-                                    Apply Coupon
-                                </button>
+                            <div className="cart_tool_box">
+                                <div className="row">
+                                    <div className="col-sm-6">
+                                        <form>
+                                            <input
+                                                type="text"
+                                                className="border-0 border-bottom rounded me-5 py-3 mb-4"
+                                                placeholder="Coupon Code"
+                                            />
+                                            <button
+                                                className="btn border-secondary rounded-pill px-4 py-3 text-primary"
+                                                type="button"
+                                            >
+                                                Apply Coupon
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <div className="col-sm-6 text-right">
+                                        <button
+                                            className="btn  border-secondary rounded-pill px-4 py-3 text-primary"
+                                            type="button"
+                                            onClick={()=> {emptyCart(),setLoader(true);  }}
+                                        >
+                                            Empty Cart
+                                        </button>
+                                    </div>
+                                </div>
+
+
+
+
                             </div>
                             <div className="row g-4 justify-content-end">
                                 <div className="col-8" />

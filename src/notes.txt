@@ -1,15 +1,4 @@
 
-x Add loader first
-x Finish cart page
-x Finish checkout page
-x Finish order page
-x Finish home page
-
-_______________________________________________
-
-x add to cart count header
-_______________________________________________
-
 - react topics to master 
 x useContext
 - frontend role
@@ -20,22 +9,19 @@ _______________________________________________
 
 Pizza-fest 
 
-- login and signup page
-- empty cart button on cart page
+x login and signup page
+
+x empty cart button on cart page
+
 - user page with user detail
 
-_______________________________________________
-
-
-Pizza-fest 
-
-- store detail page
+x store detail page
 
 x delete button on listing and single page
 
 - Render order and product list in decending order 
 
-- add cooming soon page
+- add coming soon page
 
 - add food review section for food items with history of reives by order
 

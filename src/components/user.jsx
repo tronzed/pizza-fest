@@ -10,8 +10,9 @@ function User() {
     const getOrderData = async () => {
         const res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/orders.json');
         const data = await res.json();
-        const data2 = Object.values(data);
-        setOrderData(data2);
+        const data2 = Object.values(data);        
+
+        setOrderData(data2.reverse());
     }
 
     useEffect(() => {
