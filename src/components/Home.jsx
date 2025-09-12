@@ -15,7 +15,6 @@ function Home() {
 
   const { cartReadAll } = useContext(MyContext);
 
-
   const pizzaData = async () => {
     let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/products.json');
     let resdata = await res.json();

@@ -31,7 +31,9 @@ function Cart() {
             let data2 = Object?.entries(data)?.map(([key, value]) => ({
                 'firebaseID': key,
                 ...value,
-            }))
+            }));
+
+            console.log(data2, '---------data2-----------');
 
             setCartData(data2);
             cartReadAll();
@@ -41,8 +43,8 @@ function Cart() {
             for (let item of data2) {
                 let res = await fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/products/${item.id}.json`);
                 let data = await res.json();
-                productCart.push(data);
-                CartPriceSumBox.push(data.price);
+                productCart.push({...data,fireID:item.id});
+                CartPriceSumBox.push(data?.price);
             }
             setData(productCart);
             setCartTotal(CartPriceSumBox);
@@ -56,12 +58,17 @@ function Cart() {
     }
 
     const deleteData = (id) => {
-        const cartBox = cartData.find(item => item?.id == id);
-        fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/carts/${cartBox?.firebaseId}.json`, {
+        const cartBox = cartData?.find((item) => item?.id == id);
+        fetch(`https://pizza-fest-61924-default-rtdb.firebaseio.com/carts/${cartBox?.firebaseID}.json`, {
             method: "DELETE"
         }).then(() => {
             cartRead();
         });
+
+        console.log(id, '---------id-------------');
+        console.log(cartData, '---------cartData-------------');
+        console.log(cartBox, '---------cartBox-------------');
+
     }
 
     useEffect(() => {
@@ -112,7 +119,7 @@ function Cart() {
                                                     <p className="mb-0 mt-4">{item?.name}</p>
                                                 </td>
                                                 <td>
-                                                    <p className="mb-0 mt-4">{item?.price}$</p>
+                                                    <p className="mb-0 mt-4">{item?.fireID}$</p>
                                                 </td>
                                                 {/* <td>
                                                     <div
@@ -136,9 +143,9 @@ function Cart() {
                                                         </div>
                                                     </div>
                                                 </td> */}
-                                             
+
                                                 <td>
-                                                    <button onClick={() => { deleteData(item?.id); setLoader(true) }} className="btn btn-md rounded-circle bg-light border mt-4">
+                                                    <button onClick={() => { deleteData(item?.fireID); setLoader(true) }} className="btn btn-md rounded-circle bg-light border mt-4">
                                                         <i className="fa fa-times text-danger" />
                                                     </button>
                                                 </td>
@@ -181,7 +188,7 @@ function Cart() {
                                         </div>
                                         <div className="py-4 mb-4 border-top border-bottom d-flex justify-content-between">
                                             <h5 className="mb-0 ps-4 me-4">Total</h5>
-                                            <p className="mb-0 pe-4">${cartNum+3}</p>
+                                            <p className="mb-0 pe-4">${cartNum + 3}</p>
                                         </div>
                                         <Link
                                             className="btn border-secondary rounded-pill px-4 py-3 text-primary text-uppercase mb-4 ms-4"
