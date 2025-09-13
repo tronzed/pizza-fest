@@ -1,15 +1,21 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { MyContext } from "../App";
-import { cartRead33 } from "../commonFunctions"
+import { getStoreDetail } from "../commonFunctions";
 
 function Header() {
 
     const loc = useLocation();
     const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
+    const [storeDetail, setStoreDetail] = useState([]);
+    const [bestsalerData, setBestsalerData] = useState([]);
+
 
     useEffect(() => {
         cartReadAll();
+
+        getStoreDetail().then(setStoreDetail);
+
     }, []);
 
     return (
@@ -24,13 +30,13 @@ function Header() {
                                 <small className="me-3">
                                     <i className="fas fa-map-marker-alt me-2 text-secondary" />{" "}
                                     <a href="#" className="text-white">
-                                        123 Street, New York
+                                        {storeDetail?.address}
                                     </a>
                                 </small>
                                 <small className="me-3">
                                     <i className="fas fa-envelope me-2 text-secondary" />
                                     <a href="#" className="text-white">
-                                        Email@Example.com
+                                        {storeDetail?.email}
                                     </a>
                                 </small>
                             </div>
@@ -50,9 +56,7 @@ function Header() {
 
                             <Link to="/" className="navbar-brand">
                                 {/* <h1 className="text-primary display-6">Pizza Fest</h1> */}
-                            
-                                <span className="logo_img"><img className="img-fluid" src="./assets/images/logo_01.png" alt="" /></span>
-                            
+                                <span className="logo_img"><img className="img-fluid" src={storeDetail?.logoUploadUrl} alt="" /></span>
                             </Link>
                             <button className="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                                 <span className="fa fa-bars text-primary"></span>
@@ -112,9 +116,9 @@ function Header() {
                             <div className="container py-5">
                                 <div className="row g-5 align-items-center">
                                     <div className="col-md-12 col-lg-7">
-                                        <h4 className="mb-3 text-secondary">100% Organic</h4>
+                                        <h4 className="mb-3 text-secondary">{storeDetail?.bannerSubHeading}</h4>
                                         <h1 className="mb-5 display-3 text-primary">
-                                            Making Memories, One Slice at a Time
+                                            {storeDetail?.bannerHeading}
                                         </h1>
                                     </div>
                                     <div className="col-md-12 col-lg-5">

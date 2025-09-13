@@ -27,4 +27,6 @@ x delete button on listing and single page
 
 - add time and date for orders
 
+- how to secure data (like firebase values)
+
 _______________________________________________

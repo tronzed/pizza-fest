@@ -1,4 +1,19 @@
+
+import { useEffect, useState } from 'react';
+import { getStoreDetail } from '../commonFunctions'
+
+
 function Footer() {
+
+    const [storeDetail,setStoreDetail] = useState();
+
+
+    useEffect(() => {
+
+        getStoreDetail().then(setStoreDetail)
+
+    }, [])
+
     return (
         <>
 
@@ -10,32 +25,33 @@ function Footer() {
                             <div className="row g-4">
                                 <div className="col-lg-6">
                                     <a href="#">
-                                        <span className="logo_img"><img className="img-fluid" src="./assets/images/logo_01.png" alt="" /></span>
+                                        <span className="logo_img"><img className="img-fluid" src={storeDetail?.logoUploadUrl} alt="" /></span>
                                     </a>
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="d-flex justify-content-end pt-3">
                                         <a
                                             className="btn  btn-outline-secondary me-2 btn-md-square rounded-circle"
-                                            href=""
+                                            target='_blank'
+                                            href={storeDetail?.twitter}
                                         >
                                             <i className="fab fa-twitter" />
                                         </a>
                                         <a
                                             className="btn btn-outline-secondary me-2 btn-md-square rounded-circle"
-                                            href=""
+                                            href={storeDetail?.facebook} target='_blank'
                                         >
                                             <i className="fab fa-facebook-f" />
                                         </a>
                                         <a
                                             className="btn btn-outline-secondary me-2 btn-md-square rounded-circle"
-                                            href=""
+                                            href={storeDetail?.youTube} target='_blank'
                                         >
                                             <i className="fab fa-youtube" />
                                         </a>
                                         <a
                                             className="btn btn-outline-secondary btn-md-square rounded-circle"
-                                            href=""
+                                            href={storeDetail?.linkedin} target='_blank'
                                         >
                                             <i className="fab fa-linkedin-in" />
                                         </a>

@@ -56,8 +56,6 @@ function Home() {
       <Header />
       <Loader loader={loader} />
 
-      {console.log(bestsalerData, "------------bestsalerData-----------")}
-
       <>
         <div className="container-fluid featurs py-5 hide_me">
           <div className="container py-5">
