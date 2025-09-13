@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
+import { auth } from "../firebase";
+import { signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 
 function User() {
@@ -10,9 +13,20 @@ function User() {
     const getOrderData = async () => {
         const res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/orders.json');
         const data = await res.json();
-        const data2 = Object.values(data);        
-
+        const data2 = Object.values(data);
         setOrderData(data2.reverse());
+    }
+
+    const navigate = useNavigate();
+
+    const logOutForm = async () => {
+        try {
+            await signOut(auth);
+            navigate("/");
+
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     useEffect(() => {
@@ -26,9 +40,11 @@ function User() {
             <Header />
 
             <div className="container inner_container_box">
-                <div class="table-responsive shadow rounded">
-                    <table class="table table-bordered table-hover align-middle mb-0">
-                        <thead class="table-danger">
+                <button className="btn" onClick={logOutForm}>logOut</button>
+
+                <div className="table-responsive shadow rounded">
+                    <table className="table table-bordered table-hover align-middle mb-0">
+                        <thead className="table-danger">
                             <tr>
                                 <th scope="col">Order ID</th>
                                 <th scope="col">Customer Name</th>

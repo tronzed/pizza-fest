@@ -1,7 +1,10 @@
 import { useContext, useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MyContext } from "../App";
 import { getStoreDetail } from "../commonFunctions";
+import { auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
+
 
 function Header() {
 
@@ -10,10 +13,20 @@ function Header() {
     const [storeDetail, setStoreDetail] = useState([]);
     const [bestsalerData, setBestsalerData] = useState([]);
 
+    const navigate = useNavigate();
+
+
+    function checkLogin() {
+        onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                navigate('/login');
+            }
+        })
+    }
 
     useEffect(() => {
         cartReadAll();
-
+        checkLogin();
         getStoreDetail().then(setStoreDetail);
 
     }, []);
