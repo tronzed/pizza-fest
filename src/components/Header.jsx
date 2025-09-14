@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MyContext } from "../App";
 import { getStoreDetail } from "../commonFunctions";
 import { auth } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 
 
 function Header() {
@@ -14,6 +14,17 @@ function Header() {
     const [bestsalerData, setBestsalerData] = useState([]);
 
     const navigate = useNavigate();
+
+
+    const logOutForm = async () => {
+        try {
+            await signOut(auth);
+            navigate("/");
+
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
 
 
     function checkLogin() {
@@ -110,10 +121,15 @@ function Header() {
                                             {cartCountAll?.length}
                                         </span>
                                     </Link>
-
-                                    <Link to="/user" className="my-auto">
-                                        <i className="fas fa-user fa-2x" />
-                                    </Link>
+                                    <div className="nav-item dropdown">
+                                        <button className="nav-link dropdown-toggle my-auto" data-bs-toggle="dropdown">
+                                            <i className="fas fa-user fa-2x" />
+                                        </button>
+                                        <div className="dropdown-menu m-0 bg-secondary rounded-0">
+                                            <Link to="/user" className="dropdown-item">Your Profile</Link>
+                                            <Link onClick={logOutForm} className="dropdown-item">Logout</Link>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </nav>

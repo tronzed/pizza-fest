@@ -9,14 +9,24 @@ import Cart from './components/Cart'
 import Chackout from './components/Chackout'
 import NotFound from './components/NotFound'
 import User from './components/user'
-import { createContext, useState, useContext } from 'react'
+import { createContext, useState, useContext, useEffect } from 'react'
 import OrderSuccess from './components/OrderSuccess'
 import LoginPage from './components/LoginPage'
 export const MyContext = createContext();
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 function App() {
 
   const [cartCountAll, setCartCountAll] = useState();
+  const [userDetail, setUserDetail] = useState();
+
+  const auth = getAuth();
+
+  function checkUser() {
+    onAuthStateChanged(auth, (user) => {
+      setUserDetail(user.email);
+    });
+  }
 
   const cartReadAll = async () => {
     let res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json');
@@ -30,10 +40,14 @@ function App() {
     }
   }
 
+  useEffect(()=>{
+    checkUser();
+  },[])
+
 
   return (
     <>
-
+      {console.log(userDetail,'-------------useDetail---------------')}
       <MyContext.Provider value={{ cartCountAll, setCartCountAll, cartReadAll }}>
         <BrowserRouter>
           <Routes>

@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
-import { auth } from "../firebase";
-import { signOut } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
-
 
 function User() {
 
@@ -17,17 +13,6 @@ function User() {
         setOrderData(data2.reverse());
     }
 
-    const navigate = useNavigate();
-
-    const logOutForm = async () => {
-        try {
-            await signOut(auth);
-            navigate("/");
-
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
 
     useEffect(() => {
         getOrderData();
@@ -40,7 +25,6 @@ function User() {
             <Header />
 
             <div className="container inner_container_box">
-                <button className="btn" onClick={logOutForm}>logOut</button>
 
                 <div className="table-responsive shadow rounded">
                     <table className="table table-bordered table-hover align-middle mb-0">
