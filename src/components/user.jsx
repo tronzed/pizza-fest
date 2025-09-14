@@ -1,30 +1,42 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
+
+import { MyContext } from "../App";
 
 function User() {
 
     const [orderData, setOrderData] = useState();
 
+    const { userDetail } = useContext(MyContext);
+
     const getOrderData = async () => {
         const res = await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/orders.json');
         const data = await res.json();
-        const data2 = Object.values(data);
-        setOrderData(data2.reverse());
-    }
 
+        const data2 = Object.values(data);
+
+        const data3 = data2.filter((item) => item.userDetail == userDetail);
+
+        console.log(data3);
+
+        setOrderData(data3.reverse());
+
+    }
 
     useEffect(() => {
         getOrderData();
     }, [])
 
+
     return (
 
         <>
-
             <Header />
 
             <div className="container inner_container_box">
+
+                <h2 className="text-center">User:{userDetail}</h2>
 
                 <div className="table-responsive shadow rounded">
                     <table className="table table-bordered table-hover align-middle mb-0">
