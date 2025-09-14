@@ -11,21 +11,16 @@ function Header() {
     const loc = useLocation();
     const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
     const [storeDetail, setStoreDetail] = useState([]);
-    const [bestsalerData, setBestsalerData] = useState([]);
 
     const navigate = useNavigate();
-
 
     const logOutForm = async () => {
         try {
             await signOut(auth);
-            navigate("/");
-
         } catch (error) {
             console.log(error.message);
         }
     }
-
 
     function checkLogin() {
         onAuthStateChanged(auth, (user) => {
@@ -127,7 +122,7 @@ function Header() {
                                         </button>
                                         <div className="dropdown-menu m-0 bg-secondary rounded-0">
                                             <Link to="/user" className="dropdown-item">Your Profile</Link>
-                                            <Link onClick={logOutForm} className="dropdown-item">Logout</Link>
+                                            <button onClick={logOutForm} className="dropdown-item">Logout</button>
                                         </div>
                                     </div>
                                 </div>

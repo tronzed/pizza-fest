@@ -16,9 +16,7 @@ function Chackout() {
 
     const navigate = useNavigate();
 
-
-    const { cartCountAll, setCartCountAll, cartReadAll } = useContext(MyContext);
-
+    const { userDetail, cartReadAll } = useContext(MyContext);
 
     function deleteCart() {
         fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/carts.json', {
@@ -28,10 +26,9 @@ function Chackout() {
         })
     }
 
-
     const addOrder = async (e) => {
         e.preventDefault();
-        const data = { name, address, postcode, mobile, email, cartBox }
+        const data = { name, address, postcode, mobile, email, cartBox, userDetail }
         await fetch('https://pizza-fest-61924-default-rtdb.firebaseio.com/orders.json', {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
@@ -41,7 +38,6 @@ function Chackout() {
             navigate('/order-success');
         });
     }
-
 
     const checkCart = async () => {
 
@@ -60,7 +56,6 @@ function Chackout() {
         setCartBox(productCart);
 
     }
-
 
     useEffect(() => {
         checkCart();
@@ -134,7 +129,7 @@ function Chackout() {
                                                                 <th scope="row">
                                                                     <div className="d-flex align-items-center mt-2">
                                                                         <img
-                                                                            src={`./assets/images/img_${index+1}.jpg`}
+                                                                            src={`./assets/images/img_${index + 1}.jpg`}
                                                                             className="img-fluid rounded-circle"
                                                                             style={{ width: 90, height: 90 }}
                                                                             alt=""
