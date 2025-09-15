@@ -18,19 +18,14 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 function App() {
 
   const [cartCountAll, setCartCountAll] = useState();
-  const [userDetail, setUserDetail] = useState("");
+  const [userDetail, setUserDetail] = useState();
 
   const auth = getAuth();
 
   function checkUser() {
-    try {
-      onAuthStateChanged(auth, (user) => {
-        setUserDetail(user?.email);
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-
+    onAuthStateChanged(auth, (user) => {
+      setUserDetail(user?.email);
+    });
   }
 
   const cartReadAll = async () => {
@@ -52,7 +47,7 @@ function App() {
 
   return (
     <>
-      <MyContext.Provider value={{ cartCountAll, setCartCountAll, cartReadAll, userDetail }}>
+      <MyContext.Provider value={{ cartCountAll, setCartCountAll, cartReadAll, userDetail, checkUser }}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />

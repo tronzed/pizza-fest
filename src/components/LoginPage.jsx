@@ -18,7 +18,11 @@ function LoginPage() {
         try {
             const userBox = await signInWithEmailAndPassword(auth, emailBox, passwordBox);
         } catch (error) {
+            
             console.log(error.message);
+
+            alert("wrong User Or Password");
+
         }
     }
 

@@ -73,3 +73,27 @@
     color: #fff;
     width: 100%;
 }
+.user_detail_box .lable {
+    font-size: 12px;
+    display: block;
+    color: #838383;
+}
+.user_detail_box {
+    padding: 0 0 18px 0;
+    display: flex;
+    gap: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 25px;
+}
+.user_detail_box li {
+    font-size: 17px;
+    font-weight: 600;
+    color: #000;
+}
+.inner_container_box {
+    min-height: 500px;
+}
+.no_order_box {
+    max-width: 400px;
+    margin: auto;
+}
