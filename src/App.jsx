@@ -14,6 +14,7 @@ import OrderSuccess from './components/OrderSuccess'
 import LoginPage from './components/LoginPage'
 export const MyContext = createContext();
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import ComingSoon from './components/ComingSoon'
 
 function App() {
 
@@ -54,6 +55,7 @@ function App() {
             <Route path="/single/:id" element={<Single />} />
             <Route path="/shop" element={<Shop />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/coming-soon" element={<ComingSoon />} />
             <Route path="/checkout" element={<Chackout />} />
             <Route path="/user" element={<User />} />
             <Route path="/login" element={<LoginPage />} />

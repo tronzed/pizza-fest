@@ -30,9 +30,19 @@ function Header() {
         })
     }
 
+    function checkSiteOff() {
+
+        if (false) {
+            navigate('/coming-soon');
+        }
+
+    }
+
+
     useEffect(() => {
         cartReadAll();
         checkLogin();
+        checkSiteOff();
         getStoreDetail().then(setStoreDetail);
 
     }, []);
@@ -167,7 +177,7 @@ function Header() {
                     {/* Single Page Header start */}
                     <div className="container-fluid page-header py-5">
                         <h1 className="text-center text-white display-6">Shop Detail</h1>
-                        <ol className="breadcrumb justify-content-center mb-0">
+                        <ol className="breadcrumb justify-content-center mb-0 hide_me">
                             <li className="breadcrumb-item">
                                 <a href="#">Home</a>
                             </li>
