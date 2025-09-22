@@ -1,8 +1,33 @@
 import Lottie from "lottie-react";
 import animationData from "../assets/images/loader/coming_02.json";
+import { getStoreDetail } from "../commonFunctions";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function ComingSoon() {
+
+
+    const [storeDetail, setStoreDetail] = useState([]);
+
+    const navigate = useNavigate();
+
+    function checkSiteOff() {
+
+        if (storeDetail?.comingSoon == false) {
+            navigate('/');
+        }
+
+    }
+
+
+    useEffect(() => {
+
+        checkSiteOff();
+        getStoreDetail().then(setStoreDetail);
+
+    }, [storeDetail]);
+
     return (
         <>
 

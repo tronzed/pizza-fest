@@ -18,8 +18,8 @@ x show order by user
 x order by user id
 x Add dropdown in user
 x wrong login detail 
+x add coming soon page
 
-- add coming soon page
 - add food review section for food items with history of reives by order
 - add time and date for orders
 - how to secure data (like firebase values)

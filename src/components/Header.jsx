@@ -32,12 +32,11 @@ function Header() {
 
     function checkSiteOff() {
 
-        if (false) {
+        if (storeDetail?.comingSoon) {
             navigate('/coming-soon');
         }
 
     }
-
 
     useEffect(() => {
         cartReadAll();
@@ -45,11 +44,12 @@ function Header() {
         checkSiteOff();
         getStoreDetail().then(setStoreDetail);
 
-    }, []);
+    }, [storeDetail]);
 
     return (
         <>
             <>
+
 
                 {/* Navbar start */}
                 <div className="container-fluid fixed-top">
